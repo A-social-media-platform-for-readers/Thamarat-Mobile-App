@@ -11,12 +11,16 @@ class StartScreen extends StatefulWidget {
 class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: const Color(0xFF92E3A9),
       body: SafeArea(
-          child: Column(
-        children: [
-          AppTitle(),
-        ],
+          child: Container(
+        width: double.infinity,
+        child: const Column(
+          children: [
+            AppTitle(),
+          ],
+        ),
       )),
     );
   }

@@ -10,6 +10,11 @@ class StartScreen extends StatefulWidget {
 class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: SafeArea(
+          child: Column(
+        children: [],
+      )),
+    );
   }
 }

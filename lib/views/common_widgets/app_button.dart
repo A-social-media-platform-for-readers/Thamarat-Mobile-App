@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utils/app_fonts.dart';
 
 class AppButton extends StatefulWidget {

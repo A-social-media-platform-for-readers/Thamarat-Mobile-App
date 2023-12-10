@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import '../utils/app_fonts.dart';
 
 class AppTitle extends StatelessWidget {
   const AppTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      'ثمرات Thamarat',
+    return Text(
+      'Thamarat ثمرات',
       textAlign: TextAlign.center,
-      style: TextStyle(
-        color: Colors.white,
+      style: safeGoogleFont(
+        'Changa',
         fontSize: 40,
-        fontFamily: 'Changa',
         fontWeight: FontWeight.w400,
         height: 0,
+        color: Colors.white,
       ),
     );
   }

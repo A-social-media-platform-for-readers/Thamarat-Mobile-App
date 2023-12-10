@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/views/common_widgets/welcome_text.dart';
-import 'package:untitled/views/screens/Login_screen.dart';
+import 'package:untitled/views/screens/login_screen.dart';
 import '../common_widgets/app_button.dart';
 import '../common_widgets/app_title.dart';
 

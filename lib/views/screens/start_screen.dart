@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/views/common_widgets/welcome_text.dart';
 import 'package:untitled/views/screens/login.dart';
+import 'package:untitled/views/utils/app_colors.dart';
 import '../common_widgets/app_button.dart';
 import '../common_widgets/app_title.dart';
 
@@ -15,7 +16,7 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFF92E3A9),
+        backgroundColor: AppColors.color1,
         body: SingleChildScrollView(
           child: Center(
             child: Column(
@@ -47,7 +48,7 @@ class _StartScreenState extends State<StartScreen> {
                     lable: 'لدي حساب بالفعل',
                     textColor: Colors.white,
                     borderColor: Colors.white,
-                    buttonColor: Color(0xFF92E3A9),
+                    buttonColor: AppColors.color1,
                   ),
                 ),
                 const SizedBox(
@@ -63,7 +64,7 @@ class _StartScreenState extends State<StartScreen> {
                   },
                   child: const AppButton(
                     lable: 'إنشاء حساب',
-                    textColor: Color(0xFF48FB77),
+                    textColor: AppColors.color2,
                     borderColor: Colors.white,
                     buttonColor: Colors.white,
                   ),

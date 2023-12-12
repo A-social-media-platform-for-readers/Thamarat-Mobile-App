@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../utils/app_fonts.dart';
 
 class AppTitle extends StatelessWidget {
-  const AppTitle({super.key});
+  final Color textColor;
+  const AppTitle({super.key, required this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class AppTitle extends StatelessWidget {
         fontSize: 40,
         fontWeight: FontWeight.w400,
         height: 0,
-        color: Colors.white,
+        color: textColor,
       ),
     );
   }

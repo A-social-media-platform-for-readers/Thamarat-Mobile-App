@@ -21,11 +21,8 @@ class _WelcomeTextState extends State<WelcomeText> {
             fontSize: 20,
             fontWeight: FontWeight.w700,
             height: 0,
-            color: const Color(0xff000000),
+            color: Colors.black,
           ),
-        ),
-        const SizedBox(
-          height: 17,
         ),
         Text(
           'طيب المذاق من ثمرات الاوراق',
@@ -34,7 +31,7 @@ class _WelcomeTextState extends State<WelcomeText> {
             fontSize: 20,
             fontWeight: FontWeight.w600,
             height: 0,
-            color: const Color(0xff000000),
+            color: Colors.black,
           ),
         ),
       ],

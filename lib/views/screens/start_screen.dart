@@ -23,7 +23,9 @@ class _StartScreenState extends State<StartScreen> {
                 const SizedBox(
                   height: 53,
                 ),
-                const AppTitle(),
+                const AppTitle(
+                  textColor: Colors.white,
+                ),
                 Image.asset(
                   'assets/reading-list-bro-1.png',
                   width: 460,

@@ -191,80 +191,78 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(
                         height: 4,
                       ),
-                      SingleChildScrollView(
-                        child: SizedBox(
-                            width: 286.95,
-                            height: 22,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: SizedBox(
-                                    width: 61.95,
-                                    height: 22,
-                                    child: MaterialButton(
-                                      child: Row(
-                                        children: [
-                                          Image.asset(
-                                            'assets/ri-checkbox-circle-line-bE4.png',
-                                            width: 21.95,
-                                            height: 21.95,
-                                          ),
-                                          const SizedBox(
-                                            width: 5,
-                                          ),
-                                          SizedBox(
-                                            width: 35,
-                                            height: 22,
-                                            child: Text(
-                                              'ذكرني',
-                                              style: safeGoogleFont(
-                                                'Cairo',
-                                                color: const Color(0xFF1877F2),
-                                                fontSize: 11,
-                                                fontWeight: FontWeight.w500,
-                                                height: 0,
-                                              ),
+                      SizedBox(
+                          width: 286.95,
+                          height: 22,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: SizedBox(
+                                  width: 61.95,
+                                  height: 22,
+                                  child: MaterialButton(
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          'assets/ri-checkbox-circle-line-bE4.png',
+                                          width: 21.95,
+                                          height: 21.95,
+                                        ),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        SizedBox(
+                                          width: 35,
+                                          height: 22,
+                                          child: Text(
+                                            'ذكرني',
+                                            style: safeGoogleFont(
+                                              'Cairo',
+                                              color: const Color(0xFF1877F2),
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w500,
+                                              height: 0,
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const ForgotPasswordScreen()),
-                                        );
-                                      },
+                                        ),
+                                      ],
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ForgotPasswordScreen()),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                              const Expanded(
+                                child: SizedBox(
+                                  width: 119,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: SizedBox(
+                                  width: 106,
+                                  height: 18,
+                                  child: Text(
+                                    'هل نسيت كلمة المرور ؟',
+                                    style: safeGoogleFont(
+                                      'Cairo',
+                                      color: AppColors.primary,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w500,
+                                      height: 0,
                                     ),
                                   ),
                                 ),
-                                const Expanded(
-                                  child: SizedBox(
-                                    width: 119,
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: SizedBox(
-                                    width: 106,
-                                    height: 18,
-                                    child: Text(
-                                      'هل نسيت كلمة المرور ؟',
-                                      style: safeGoogleFont(
-                                        'Cairo',
-                                        color: AppColors.primary,
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.w500,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )),
-                      ),
+                              ),
+                            ],
+                          )),
                       const SizedBox(
                         width: 5,
                       ),

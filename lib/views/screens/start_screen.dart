@@ -16,7 +16,7 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.color1,
+        backgroundColor: AppColors.primary,
         body: SingleChildScrollView(
           child: Center(
             child: Column(
@@ -48,7 +48,7 @@ class _StartScreenState extends State<StartScreen> {
                     lable: 'لدي حساب بالفعل',
                     textColor: Colors.white,
                     borderColor: Colors.white,
-                    buttonColor: AppColors.color1,
+                    buttonColor: AppColors.primary,
                   ),
                 ),
                 const SizedBox(

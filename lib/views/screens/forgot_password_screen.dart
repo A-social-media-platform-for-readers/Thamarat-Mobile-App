@@ -14,7 +14,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       appBar: AppBar(),
       body: const SingleChildScrollView(
           child: Column(
-        children: [],
+        children: [Text('Forgot Password Screen')],
       )),
     );
   }

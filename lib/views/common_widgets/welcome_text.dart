@@ -14,25 +14,32 @@ class _WelcomeTextState extends State<WelcomeText> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          'اهلا بك في ثمرات\n',
-          style: safeGoogleFont(
-            'Cairo',
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            height: 0,
-            color: Colors.black,
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: 'اهلا بك في ثمرات \n',
+                style: safeGoogleFont(
+                  'Cairo',
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 0,
+                ),
+              ),
+              TextSpan(
+                text: 'طيب المذاق من ثمرات الاوراق',
+                style: safeGoogleFont(
+                  'Cairo',
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  height: 0,
+                ),
+              ),
+            ],
           ),
-        ),
-        Text(
-          'طيب المذاق من ثمرات الاوراق',
-          style: safeGoogleFont(
-            'Cairo',
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            height: 0,
-            color: Colors.black,
-          ),
+          textAlign: TextAlign.center,
         ),
       ],
     );

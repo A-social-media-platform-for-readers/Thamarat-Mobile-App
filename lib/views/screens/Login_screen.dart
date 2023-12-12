@@ -32,13 +32,13 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 26,
             ),
-            Container(
+            SizedBox(
               width: 297,
               height: 79,
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
-                  Container(
+                  SizedBox(
                     width: double.infinity,
                     height: 79,
                     child: Text(

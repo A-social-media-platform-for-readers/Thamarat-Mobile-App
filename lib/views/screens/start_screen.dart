@@ -31,12 +31,9 @@ class _StartScreenState extends State<StartScreen> {
                   width: 460,
                   height: 460,
                 ),
-                const SizedBox(
-                  height: 29,
-                ),
                 const WelcomeText(),
                 const SizedBox(
-                  height: 17,
+                  height: 29,
                 ),
                 InkWell(
                   onTap: () {
@@ -70,6 +67,9 @@ class _StartScreenState extends State<StartScreen> {
                     borderColor: Colors.white,
                     buttonColor: Colors.white,
                   ),
+                ),
+                const SizedBox(
+                  height: 49,
                 ),
               ],
             ),

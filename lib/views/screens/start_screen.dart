@@ -17,62 +17,64 @@ class _StartScreenState extends State<StartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.primary,
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 53,
-                ),
-                const AppTitle(
-                  textColor: Colors.white,
-                ),
-                Image.asset(
-                  'assets/reading-list-bro-1.png',
-                  width: 460,
-                  height: 460,
-                ),
-                const WelcomeText(),
-                const SizedBox(
-                  height: 29,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
-                    );
-                  },
-                  child: const AppButton(
-                    lable: 'لدي حساب بالفعل',
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 53,
+                  ),
+                  const AppTitle(
                     textColor: Colors.white,
-                    borderColor: Colors.white,
-                    buttonColor: AppColors.primary,
                   ),
-                ),
-                const SizedBox(
-                  height: 17,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
-                    );
-                  },
-                  child: const AppButton(
-                    lable: 'إنشاء حساب',
-                    textColor: AppColors.color2,
-                    borderColor: Colors.white,
-                    buttonColor: Colors.white,
+                  Image.asset(
+                    'assets/reading-list-bro-1.png',
+                    width: 460,
+                    height: 460,
                   ),
-                ),
-                const SizedBox(
-                  height: 49,
-                ),
-              ],
+                  const WelcomeText(),
+                  const SizedBox(
+                    height: 29,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                      );
+                    },
+                    child: const AppButton(
+                      lable: 'لدي حساب بالفعل',
+                      textColor: Colors.white,
+                      borderColor: Colors.white,
+                      buttonColor: AppColors.primary,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 17,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                      );
+                    },
+                    child: const AppButton(
+                      lable: 'إنشاء حساب',
+                      textColor: AppColors.color2,
+                      borderColor: Colors.white,
+                      buttonColor: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 49,
+                  ),
+                ],
+              ),
             ),
           ),
         ));

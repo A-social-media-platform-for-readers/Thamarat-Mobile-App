@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/views/common_widgets/back_and_next_buttons.dart';
 import 'package:untitled/views/common_widgets/welcome_text.dart';
 import 'package:untitled/views/screens/forgot_password_screen.dart';
+import 'package:untitled/views/screens/home_screen.dart';
+import 'package:untitled/views/screens/start_screen.dart';
 import 'package:untitled/views/utils/app_colors.dart';
 import 'package:untitled/views/utils/app_fonts.dart';
-
 import '../common_widgets/app_title.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -264,7 +266,91 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           )),
                       const SizedBox(
-                        width: 5,
+                        height: 18,
+                      ),
+                      SizedBox(
+                        width: 295,
+                        height: 56,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const StartScreen()),
+                                    );
+                                  },
+                                  child: const BackNextButtons(
+                                    lable: 'رجوع',
+                                    buttonColor: Colors.white,
+                                    textColor: AppColors.primary,
+                                  )),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HomeScreen()),
+                                    );
+                                  },
+                                  child: const BackNextButtons(
+                                    lable: 'دخول',
+                                    textColor: Colors.white,
+                                    buttonColor: AppColors.primary,
+                                  )),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        width: 288,
+                        height: 42,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Container(
+                              width: 288,
+                              height: 1,
+                              decoration: const BoxDecoration(
+                                border: Border(
+                                  top: BorderSide(
+                                      color: AppColors.primary, width: 1.0),
+                                  bottom: BorderSide.none,
+                                  right: BorderSide.none,
+                                  left: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 42,
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(color: Colors.white),
+                              child: Text(
+                                'او من خلال',
+                                textAlign: TextAlign.center,
+                                style: safeGoogleFont(
+                                  'Cairo',
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),

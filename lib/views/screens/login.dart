@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/views/common_widgets/back_and_next_buttons.dart';
+import 'package:untitled/views/common_widgets/platform_button.dart';
 import 'package:untitled/views/common_widgets/welcome_text.dart';
 import 'package:untitled/views/screens/forgot_password_screen.dart';
 import 'package:untitled/views/screens/home_screen.dart';
@@ -7,6 +8,7 @@ import 'package:untitled/views/screens/start_screen.dart';
 import 'package:untitled/views/utils/app_colors.dart';
 import 'package:untitled/views/utils/app_fonts.dart';
 import '../common_widgets/app_title.dart';
+import '../common_widgets/login_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -45,149 +48,35 @@ class _LoginScreenState extends State<LoginScreen> {
                   key: formKey,
                   child: Column(
                     children: [
-                      SizedBox(
-                        width: 297,
-                        height: 79,
-                        child: Stack(
-                          alignment: Alignment.bottomCenter,
-                          children: [
-                            SizedBox(
-                              width: double.infinity,
-                              height: 79,
-                              child: Text(
-                                'البريد الالكتروني',
-                                textAlign: TextAlign.right,
-                                style: safeGoogleFont(
-                                  'Cairo',
-                                  color: AppColors.color3,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 297,
-                              height: 56,
-                              decoration: ShapeDecoration(
-                                shape: RoundedRectangleBorder(
-                                  side: const BorderSide(
-                                      width: 1, color: AppColors.color3),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              child: TextFormField(
-                                keyboardType: TextInputType.emailAddress,
-                                controller: emailController,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding:
-                                      const EdgeInsetsDirectional.only(
-                                    top: 18,
-                                    bottom: 17,
-                                    start: 14,
-                                  ),
-                                  hintText: "exampLe@gmail.com",
-                                  hintStyle: safeGoogleFont(
-                                    'Cairo',
-                                    color: AppColors.color3,
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w500,
-                                    height: 0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      LoginTextField(
+                        controller: emailController,
+                        lable: 'البريد الالكتروني',
+                        keyboardType: TextInputType.emailAddress,
+                        hintText: 'example@gmail.com',
                       ),
                       const SizedBox(
                         height: 4,
                       ),
-                      SizedBox(
-                        width: 297,
-                        height: 79,
-                        child: Stack(
-                          alignment: Alignment.bottomCenter,
-                          children: [
-                            Container(
-                              width: 1,
-                              height: 56,
-                              margin: const EdgeInsetsDirectional.only(
-                                  start: 249, end: 48),
-                              decoration: const BoxDecoration(
-                                border: Border(
-                                  left: BorderSide(
-                                      color: AppColors.color3, width: 1.0),
-                                  top: BorderSide.none,
-                                  right: BorderSide.none,
-                                  bottom: BorderSide.none,
-                                ),
-                              ),
+                      LoginTextField(
+                        controller: emailController,
+                        lable: 'كلمة المرور',
+                        keyboardType: TextInputType.visiblePassword,
+                        hintText: 'password',
+                        obscureText: isPasswordHidden,
+                        suffixIcon: IconButton(
+                          icon: Padding(
+                            padding: const EdgeInsetsDirectional.symmetric(
+                                horizontal: 3),
+                            child: Icon(
+                              isPasswordHidden
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                             ),
-                            SizedBox(
-                              width: double.infinity,
-                              height: 79,
-                              child: Text(
-                                'كلمة المرور ',
-                                textAlign: TextAlign.right,
-                                style: safeGoogleFont(
-                                  'Cairo',
-                                  color: AppColors.color3,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 297,
-                              height: 56,
-                              decoration: ShapeDecoration(
-                                shape: RoundedRectangleBorder(
-                                  side: const BorderSide(
-                                      width: 1, color: AppColors.color3),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              child: TextFormField(
-                                keyboardType: TextInputType.visiblePassword,
-                                obscureText: isPasswordHidden,
-                                controller: passwordController,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding:
-                                      const EdgeInsetsDirectional.only(
-                                    top: 18,
-                                    bottom: 17,
-                                    start: 14,
-                                  ),
-                                  hintText: "password",
-                                  hintStyle: safeGoogleFont(
-                                    'Cairo',
-                                    color: AppColors.color3,
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w500,
-                                    height: 0,
-                                  ),
-                                  suffixIcon: IconButton(
-                                    icon: Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.symmetric(
-                                              horizontal: 3),
-                                      child: Icon(
-                                        isPasswordHidden
-                                            ? Icons.visibility_off
-                                            : Icons.visibility,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      isPasswordHidden = !isPasswordHidden;
-                                      setState(() {});
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
+                          onPressed: () {
+                            isPasswordHidden = !isPasswordHidden;
+                            setState(() {});
+                          },
                         ),
                       ),
                       const SizedBox(
@@ -247,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: SizedBox(
                                   width: 106,
                                   height: 18,
@@ -314,47 +203,110 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(
                         height: 15,
                       ),
-                      SizedBox(
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 288,
+                  height: 42,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
                         width: 288,
+                        height: 1,
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            top: BorderSide(
+                                color: AppColors.primary, width: 1.0),
+                            bottom: BorderSide.none,
+                            right: BorderSide.none,
+                            left: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                      Container(
                         height: 42,
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              width: 288,
-                              height: 1,
-                              decoration: const BoxDecoration(
-                                border: Border(
-                                  top: BorderSide(
-                                      color: AppColors.primary, width: 1.0),
-                                  bottom: BorderSide.none,
-                                  right: BorderSide.none,
-                                  left: BorderSide.none,
-                                ),
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(color: Colors.white),
+                        child: Text(
+                          'او من خلال',
+                          textAlign: TextAlign.center,
+                          style: safeGoogleFont(
+                            'Cairo',
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const PlatformButton(
+                    lable: 'Google',
+                    icon: 'assets/group-272.png',
+                    buttonColor: Colors.white,
+                    textColor: Colors.black),
+                const SizedBox(
+                  height: 11,
+                ),
+                const PlatformButton(
+                    lable: 'Facebook',
+                    icon: 'assets/vector.png',
+                    buttonColor: Color(0xFF1877F2),
+                    textColor: Colors.white),
+                const SizedBox(
+                  height: 36,
+                ),
+                SizedBox(
+                  width: 155,
+                  height: 18,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          width: 64,
+                          height: 18,
+                          child: Opacity(
+                            opacity: 0.75,
+                            child: Text(
+                              'إنشاء حساب',
+                              style: safeGoogleFont(
+                                'Cairo',
+                                color: const Color(0xFF4CAF50),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                height: 0,
                               ),
                             ),
-                            Container(
-                              height: 42,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(color: Colors.white),
-                              child: Text(
-                                'او من خلال',
-                                textAlign: TextAlign.center,
-                                style: safeGoogleFont(
-                                  'Cairo',
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  height: 0,
-                                ),
-                              ),
-                            )
-                          ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          width: 89,
+                          height: 18,
+                          child: Text(
+                            'ليس لديك حساب؟',
+                            style: safeGoogleFont(
+                              'Cairo',
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              height: 0,
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 26,
+                )
               ],
             ),
           ),

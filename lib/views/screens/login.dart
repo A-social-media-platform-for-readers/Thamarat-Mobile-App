@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/views/common_widgets/back_and_next_buttons.dart';
 import 'package:untitled/views/common_widgets/platform_button.dart';
 import 'package:untitled/views/common_widgets/welcome_text.dart';
@@ -31,18 +32,18 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Center(
             child: Column(
               children: [
-                const SizedBox(
-                  height: 53,
+                SizedBox(
+                  height: 53.h,
                 ),
                 const AppTitle(
                   textColor: AppColors.primary,
                 ),
-                const SizedBox(
-                  height: 21,
+                SizedBox(
+                  height: 21.h,
                 ),
                 const WelcomeText(),
-                const SizedBox(
-                  height: 26,
+                SizedBox(
+                  height: 26.h,
                 ),
                 Form(
                   key: formKey,
@@ -54,8 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardType: TextInputType.emailAddress,
                         hintText: 'example@gmail.com',
                       ),
-                      const SizedBox(
-                        height: 4,
+                      SizedBox(
+                        height: 4.h,
                       ),
                       LoginTextField(
                         controller: emailController,
@@ -79,39 +80,39 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                         ),
                       ),
-                      const SizedBox(
-                        height: 4,
+                      SizedBox(
+                        height: 4.h,
                       ),
                       SizedBox(
-                          width: 286.95,
-                          height: 22,
+                          width: 286.95.w,
+                          height: 22.h,
                           child: Row(
                             children: [
                               Expanded(
                                 flex: 2,
                                 child: SizedBox(
-                                  width: 61.95,
-                                  height: 22,
+                                  width: 61.95.w,
+                                  height: 22.h,
                                   child: MaterialButton(
                                     child: Row(
                                       children: [
                                         Image.asset(
                                           'assets/ri-checkbox-circle-line-bE4.png',
-                                          width: 21.95,
-                                          height: 21.95,
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
+                                          width: 21.95.w,
+                                          height: 21.95.h,
                                         ),
                                         SizedBox(
-                                          width: 35,
-                                          height: 22,
+                                          width: 5.w,
+                                        ),
+                                        SizedBox(
+                                          width: 35.w,
+                                          height: 22.h,
                                           child: Text(
                                             'ذكرني',
                                             style: safeGoogleFont(
                                               'Cairo',
                                               color: const Color(0xFF1877F2),
-                                              fontSize: 11,
+                                              fontSize: 11.sp,
                                               fontWeight: FontWeight.w500,
                                               height: 0,
                                             ),
@@ -130,22 +131,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
-                              const Expanded(
+                              Expanded(
                                 child: SizedBox(
-                                  width: 119,
+                                  width: 119.w,
                                 ),
                               ),
                               Expanded(
                                 flex: 3,
                                 child: SizedBox(
-                                  width: 106,
-                                  height: 18,
+                                  width: 106.w,
+                                  height: 18.h,
                                   child: Text(
                                     'هل نسيت كلمة المرور ؟',
                                     style: safeGoogleFont(
                                       'Cairo',
                                       color: AppColors.primary,
-                                      fontSize: 11,
+                                      fontSize: 11.sp,
                                       fontWeight: FontWeight.w500,
                                       height: 0,
                                     ),
@@ -154,12 +155,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ],
                           )),
-                      const SizedBox(
-                        height: 18,
+                      SizedBox(
+                        height: 18.h,
                       ),
                       SizedBox(
-                        width: 295,
-                        height: 56,
+                        width: 295.w,
+                        height: 56.h,
                         child: Row(
                           children: [
                             Expanded(
@@ -178,8 +179,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     textColor: AppColors.primary,
                                   )),
                             ),
-                            const SizedBox(
-                              width: 15,
+                            SizedBox(
+                              width: 15.w,
                             ),
                             Expanded(
                               child: InkWell(
@@ -200,21 +201,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 15,
+                      SizedBox(
+                        height: 15.h,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  width: 288,
-                  height: 42,
+                  width: 288.w,
+                  height: 42.h,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
                       Container(
-                        width: 288,
-                        height: 1,
+                        width: 288.w,
+                        height: 1.h,
                         decoration: const BoxDecoration(
                           border: Border(
                             top: BorderSide(
@@ -226,7 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Container(
-                        height: 42,
+                        height: 42.h,
                         padding: const EdgeInsets.all(10),
                         decoration: const BoxDecoration(color: Colors.white),
                         child: Text(
@@ -235,7 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: safeGoogleFont(
                             'Cairo',
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
                             height: 0,
                           ),
@@ -249,27 +250,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     icon: 'assets/group-272.png',
                     buttonColor: Colors.white,
                     textColor: Colors.black),
-                const SizedBox(
-                  height: 11,
+                SizedBox(
+                  height: 11.h,
                 ),
                 const PlatformButton(
                     lable: 'Facebook',
                     icon: 'assets/vector.png',
                     buttonColor: Color(0xFF1877F2),
                     textColor: Colors.white),
-                const SizedBox(
-                  height: 36,
+                SizedBox(
+                  height: 36.h,
                 ),
                 SizedBox(
-                  width: 155,
-                  height: 18,
+                  width: 155.w,
+                  height: 18.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Expanded(
                         child: SizedBox(
-                          width: 64,
-                          height: 18,
+                          width: 64.w,
+                          height: 18.h,
                           child: Opacity(
                             opacity: 0.75,
                             child: Text(
@@ -277,7 +278,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: safeGoogleFont(
                                 'Cairo',
                                 color: const Color(0xFF4CAF50),
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w600,
                                 height: 0,
                               ),
@@ -287,14 +288,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Expanded(
                         child: SizedBox(
-                          width: 89,
-                          height: 18,
+                          width: 89.w,
+                          height: 18.h,
                           child: Text(
                             'ليس لديك حساب؟',
                             style: safeGoogleFont(
                               'Cairo',
                               color: Colors.black,
-                              fontSize: 12,
+                              fontSize: 12.sp,
                               fontWeight: FontWeight.w600,
                               height: 0,
                             ),
@@ -304,8 +305,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 26,
+                SizedBox(
+                  height: 26.h,
                 )
               ],
             ),

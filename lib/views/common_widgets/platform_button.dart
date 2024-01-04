@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlatformButton extends StatefulWidget {
   final String lable;
@@ -21,13 +22,13 @@ class _PlatformButtonState extends State<PlatformButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 290,
-      height: 52,
+      width: 290.w,
+      height: 52.h,
       child: Stack(
         children: [
           Container(
-            width: 290,
-            height: 52,
+            width: 290.w,
+            height: 52.h,
             decoration: ShapeDecoration(
               color: widget.buttonColor,
               shape: RoundedRectangleBorder(
@@ -43,21 +44,21 @@ class _PlatformButtonState extends State<PlatformButton> {
             ),
           ),
           Container(
-              width: 32.62,
-              height: 32.62,
+              width: 32.62.w,
+              height: 32.62.h,
               margin: const EdgeInsetsDirectional.only(
                   start: 17, end: 240.38, top: 10, bottom: 9.38),
               child: Image.asset(widget.icon)),
           Container(
-            width: 55,
-            height: 21,
+            width: 55.w,
+            height: 21.h,
             margin: const EdgeInsetsDirectional.only(
                 start: 118, end: 117, top: 16, bottom: 15),
             child: Text(
               widget.lable,
               style: TextStyle(
                 color: widget.textColor,
-                fontSize: 15,
+                fontSize: 15.sp,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w600,
                 height: 0,

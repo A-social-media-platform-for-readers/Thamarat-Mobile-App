@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_fonts.dart';
 
 class AppButton extends StatefulWidget {
@@ -23,8 +24,8 @@ class _AppButtonState extends State<AppButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 297,
-      height: 56,
+      width: 297.w,
+      height: 56.h,
       decoration: ShapeDecoration(
         color: widget.buttonColor,
         shape: RoundedRectangleBorder(
@@ -37,7 +38,7 @@ class _AppButtonState extends State<AppButton> {
           widget.lable,
           textAlign: TextAlign.center,
           style: safeGoogleFont('Cairo',
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w500,
               height: 0,
               color: widget.textColor),

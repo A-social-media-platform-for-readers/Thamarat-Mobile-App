@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_fonts.dart';
 
 class AppTitle extends StatelessWidget {
@@ -12,7 +13,7 @@ class AppTitle extends StatelessWidget {
       textAlign: TextAlign.center,
       style: safeGoogleFont(
         'Changa',
-        fontSize: 40,
+        fontSize: 40.sp,
         fontWeight: FontWeight.w400,
         height: 0,
         color: textColor,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/views/common_widgets/welcome_text.dart';
 import 'package:untitled/views/screens/login.dart';
 import 'package:untitled/views/screens/sign_up_screen.dart';
@@ -23,20 +24,20 @@ class _StartScreenState extends State<StartScreen> {
             child: Center(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 53,
+                  SizedBox(
+                    height: 53.h,
                   ),
                   const AppTitle(
                     textColor: Colors.white,
                   ),
                   Image.asset(
                     'assets/reading-list-bro-1.png',
-                    width: 460,
-                    height: 460,
+                    width: 460.w,
+                    height: 460.h,
                   ),
                   const WelcomeText(),
-                  const SizedBox(
-                    height: 29,
+                  SizedBox(
+                    height: 29.h,
                   ),
                   InkWell(
                     onTap: () {
@@ -53,8 +54,8 @@ class _StartScreenState extends State<StartScreen> {
                       buttonColor: AppColors.primary,
                     ),
                   ),
-                  const SizedBox(
-                    height: 17,
+                  SizedBox(
+                    height: 17.h,
                   ),
                   InkWell(
                     onTap: () {
@@ -71,8 +72,8 @@ class _StartScreenState extends State<StartScreen> {
                       buttonColor: Colors.white,
                     ),
                   ),
-                  const SizedBox(
-                    height: 49,
+                  SizedBox(
+                    height: 49.h,
                   ),
                 ],
               ),

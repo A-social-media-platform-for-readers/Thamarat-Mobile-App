@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_fonts.dart';
 
@@ -22,7 +23,7 @@ class _WelcomeTextState extends State<WelcomeText> {
                 style: safeGoogleFont(
                   'Cairo',
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.w700,
                   height: 0,
                 ),
@@ -32,7 +33,7 @@ class _WelcomeTextState extends State<WelcomeText> {
                 style: safeGoogleFont(
                   'Cairo',
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                   height: 0,
                 ),

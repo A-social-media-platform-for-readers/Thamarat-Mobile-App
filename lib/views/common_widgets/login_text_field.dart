@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_fonts.dart';
 
@@ -28,29 +29,29 @@ class _LoginTextFieldState extends State<LoginTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 297,
-      height: 79,
+      width: 297.w,
+      height: 79.h,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           widget.line ?? const SizedBox(),
           SizedBox(
-            width: double.infinity,
-            height: 79,
+            width: double.infinity.w,
+            height: 79.h,
             child: Text(
               widget.lable,
               textAlign: TextAlign.right,
               style: safeGoogleFont(
                 'Cairo',
                 color: AppColors.color3,
-                fontSize: 11,
+                fontSize: 11.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           Container(
-            width: 297,
-            height: 56,
+            width: 297.w,
+            height: 56.h,
             decoration: ShapeDecoration(
               shape: RoundedRectangleBorder(
                 side: const BorderSide(width: 1, color: AppColors.color3),
@@ -72,7 +73,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                 hintStyle: safeGoogleFont(
                   'Cairo',
                   color: AppColors.color3,
-                  fontSize: 11,
+                  fontSize: 11.sp,
                   fontWeight: FontWeight.w500,
                   height: 0,
                 ),

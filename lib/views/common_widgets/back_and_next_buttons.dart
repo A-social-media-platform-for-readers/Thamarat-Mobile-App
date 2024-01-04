@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/views/utils/app_fonts.dart';
 
 class BackNextButtons extends StatefulWidget {
@@ -21,8 +22,8 @@ class _BackNextButtonsState extends State<BackNextButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 140,
-        height: 56,
+        width: 140.w,
+        height: 56.h,
         decoration: ShapeDecoration(
           color: widget.buttonColor,
           shape: RoundedRectangleBorder(
@@ -45,7 +46,7 @@ class _BackNextButtonsState extends State<BackNextButtons> {
             style: safeGoogleFont(
               'Cairo',
               color: widget.textColor,
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w700,
               height: 0,
             ),

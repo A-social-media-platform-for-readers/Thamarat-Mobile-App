@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/views/common_widgets/welcome_text.dart';
 import 'package:untitled/views/screens/login.dart';
+import 'package:untitled/views/screens/sign_up_screen.dart';
 import 'package:untitled/views/utils/app_colors.dart';
 import '../common_widgets/app_button.dart';
 import '../common_widgets/app_title.dart';
@@ -60,7 +61,7 @@ class _StartScreenState extends State<StartScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const LoginScreen()),
+                            builder: (context) => const SignUpScreen()),
                       );
                     },
                     child: const AppButton(

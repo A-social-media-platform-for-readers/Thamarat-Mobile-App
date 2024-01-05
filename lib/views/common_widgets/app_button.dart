@@ -23,26 +23,46 @@ class AppButton extends StatefulWidget {
 class _AppButtonState extends State<AppButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 297.w,
       height: 56.h,
-      decoration: ShapeDecoration(
-        color: widget.buttonColor,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 3, color: widget.borderColor),
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
-      child: Center(
-        child: Text(
-          widget.lable,
-          textAlign: TextAlign.center,
-          style: safeGoogleFont('Cairo',
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w500,
-              height: 0,
-              color: widget.textColor),
-        ),
+      child: Stack(
+        children: [
+          Positioned(
+            left: 0.w,
+            top: 0.h,
+            child: Container(
+              width: 297.w,
+              height: 56.h,
+              decoration: ShapeDecoration(
+                color: widget.buttonColor,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(width: 3, color: widget.borderColor),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 49.w,
+            top: 12.h,
+            child: SizedBox(
+              width: 200.w,
+              height: 33.h,
+              child: Text(
+                widget.lable,
+                textAlign: TextAlign.center,
+                style: safeGoogleFont(
+                  'Cairo',
+                  color: widget.textColor,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                  height: 0,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -54,14 +54,19 @@ class _PlatformButtonState extends State<PlatformButton> {
             height: 21.h,
             margin: const EdgeInsetsDirectional.only(
                 start: 118, end: 117, top: 16, bottom: 15),
-            child: Text(
-              widget.lable,
-              style: TextStyle(
-                color: widget.textColor,
-                fontSize: 15.sp,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w600,
-                height: 0,
+            child: FittedBox(
+              fit: BoxFit
+                  .scaleDown, // Scale the text down to fit the available space
+              child: Text(
+                widget.lable,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: widget.textColor,
+                  fontSize: 15.sp,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                  height: 0,
+                ),
               ),
             ),
           )

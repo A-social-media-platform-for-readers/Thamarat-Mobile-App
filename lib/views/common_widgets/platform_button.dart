@@ -43,29 +43,33 @@ class _PlatformButtonState extends State<PlatformButton> {
               ],
             ),
           ),
-          Container(
-              width: 32.62.w,
-              height: 32.62.h,
+          Positioned(
+            left: 17.w,
+            top: 10.h,
+            child: SizedBox(
+                width: 32.62.w,
+                height: 32.62.h,
+                child: Image.asset(widget.icon)),
+          ),
+          Center(
+            child: Container(
+              width: 55.w,
+              height: 21.h,
               margin: const EdgeInsetsDirectional.only(
-                  start: 17, end: 240.38, top: 10, bottom: 9.38),
-              child: Image.asset(widget.icon)),
-          Container(
-            width: 55.w,
-            height: 21.h,
-            margin: const EdgeInsetsDirectional.only(
-                start: 118, end: 117, top: 16, bottom: 15),
-            child: FittedBox(
-              fit: BoxFit
-                  .scaleDown, // Scale the text down to fit the available space
-              child: Text(
-                widget.lable,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: widget.textColor,
-                  fontSize: 15.sp,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
+                  start: 118, end: 117, top: 16, bottom: 15),
+              child: FittedBox(
+                fit: BoxFit
+                    .scaleDown, // Scale the text down to fit the available space
+                child: Text(
+                  widget.lable,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: widget.textColor,
+                    fontSize: 15.sp,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0,
+                  ),
                 ),
               ),
             ),

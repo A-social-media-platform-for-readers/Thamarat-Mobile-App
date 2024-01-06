@@ -59,20 +59,33 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 4.h,
                       ),
                       LoginTextField(
-                        controller: emailController,
+                        controller: passwordController,
                         lable: 'كلمة المرور',
                         keyboardType: TextInputType.visiblePassword,
                         hintText: 'password',
                         obscureText: isPasswordHidden,
-                        suffixIcon: IconButton(
-                          icon: Padding(
-                            padding: const EdgeInsetsDirectional.symmetric(
-                                horizontal: 3),
-                            child: Icon(
-                              isPasswordHidden
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
+                        line: Transform(
+                          transform: Matrix4.identity()
+                            ..translate(0.0, 0.0)
+                            ..rotateZ(1.57),
+                          child: Container(
+                            width: 56.w,
+                            decoration: const ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  width: 1,
+                                  strokeAlign: BorderSide.strokeAlignCenter,
+                                  color: Color(0xFF8B8B8B),
+                                ),
+                              ),
                             ),
+                          ),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            isPasswordHidden
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                           ),
                           onPressed: () {
                             isPasswordHidden = !isPasswordHidden;
@@ -87,14 +100,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 286.95.w,
                           height: 22.h,
                           child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Expanded(
-                                flex: 2,
                                 child: SizedBox(
                                   width: 61.95.w,
-                                  height: 22.h,
+                                  height: double.infinity.h,
                                   child: MaterialButton(
                                     child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Image.asset(
                                           'assets/ri-checkbox-circle-line-bE4.png',
@@ -107,14 +124,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                         SizedBox(
                                           width: 35.w,
                                           height: 22.h,
-                                          child: Text(
-                                            'ذكرني',
-                                            style: safeGoogleFont(
-                                              'Cairo',
-                                              color: const Color(0xFF1877F2),
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              height: 0,
+                                          child: FittedBox(
+                                            fit: BoxFit
+                                                .scaleDown, // Scale the text down to fit the available space
+                                            child: Text(
+                                              'ذكرني',
+                                              style: safeGoogleFont(
+                                                'Cairo',
+                                                color: const Color(0xFF1877F2),
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                height: 0,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -137,18 +158,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               Expanded(
-                                flex: 3,
                                 child: SizedBox(
                                   width: 106.w,
                                   height: 18.h,
-                                  child: Text(
-                                    'هل نسيت كلمة المرور ؟',
-                                    style: safeGoogleFont(
-                                      'Cairo',
-                                      color: AppColors.primary,
-                                      fontSize: 11.sp,
-                                      fontWeight: FontWeight.w500,
-                                      height: 0,
+                                  child: FittedBox(
+                                    fit: BoxFit
+                                        .scaleDown, // Scale the text down to fit the available space
+                                    child: Text(
+                                      'هل نسيت كلمة المرور ؟',
+                                      style: safeGoogleFont(
+                                        'Cairo',
+                                        color: AppColors.primary,
+                                        fontSize: 11.sp,
+                                        fontWeight: FontWeight.w500,
+                                        height: 0,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -230,18 +254,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 42.h,
                         padding: const EdgeInsets.all(10),
                         decoration: const BoxDecoration(color: Colors.white),
-                        child: Text(
-                          'او من خلال',
-                          textAlign: TextAlign.center,
-                          style: safeGoogleFont(
-                            'Cairo',
-                            color: Colors.black,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            height: 0,
+                        child: FittedBox(
+                          fit: BoxFit
+                              .scaleDown, // Scale the text down to fit the available space
+                          child: Text(
+                            'او من خلال',
+                            textAlign: TextAlign.center,
+                            style: safeGoogleFont(
+                              'Cairo',
+                              color: Colors.black,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                              height: 0,
+                            ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -273,14 +301,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 18.h,
                           child: Opacity(
                             opacity: 0.75,
-                            child: Text(
-                              'إنشاء حساب',
-                              style: safeGoogleFont(
-                                'Cairo',
-                                color: const Color(0xFF4CAF50),
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                                height: 0,
+                            child: FittedBox(
+                              fit: BoxFit
+                                  .scaleDown, // Scale the text down to fit the available space
+                              child: Text(
+                                'إنشاء حساب',
+                                style: safeGoogleFont(
+                                  'Cairo',
+                                  color: const Color(0xFF4CAF50),
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w600,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ),
@@ -290,14 +322,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: SizedBox(
                           width: 89.w,
                           height: 18.h,
-                          child: Text(
-                            'ليس لديك حساب؟',
-                            style: safeGoogleFont(
-                              'Cairo',
-                              color: Colors.black,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w600,
-                              height: 0,
+                          child: FittedBox(
+                            fit: BoxFit
+                                .scaleDown, // Scale the text down to fit the available space
+                            child: Text(
+                              'ليس لديك حساب؟',
+                              style: safeGoogleFont(
+                                'Cairo',
+                                color: Colors.black,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w600,
+                                height: 0,
+                              ),
                             ),
                           ),
                         ),

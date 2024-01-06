@@ -49,15 +49,19 @@ class _AppButtonState extends State<AppButton> {
             child: SizedBox(
               width: 200.w,
               height: 33.h,
-              child: Text(
-                widget.lable,
-                textAlign: TextAlign.center,
-                style: safeGoogleFont(
-                  'Cairo',
-                  color: widget.textColor,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w500,
-                  height: 0,
+              child: FittedBox(
+                fit: BoxFit
+                    .scaleDown, // Scale the text down to fit the available space
+                child: Text(
+                  widget.lable,
+                  textAlign: TextAlign.center,
+                  style: safeGoogleFont(
+                    'Cairo',
+                    color: widget.textColor,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
+                    height: 0,
+                  ),
                 ),
               ),
             ),

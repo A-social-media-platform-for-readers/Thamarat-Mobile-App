@@ -41,8 +41,7 @@ class _BackNextButtonsState extends State<BackNextButtons> {
         ),
         child: Center(
             child: FittedBox(
-          fit: BoxFit
-              .scaleDown, // Scale the text down to fit the available space
+          fit: BoxFit.scaleDown,
           child: Text(
             widget.lable,
             textAlign: TextAlign.center,

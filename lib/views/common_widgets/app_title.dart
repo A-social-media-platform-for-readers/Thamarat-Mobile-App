@@ -8,15 +8,22 @@ class AppTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Thamarat ثمرات',
-      textAlign: TextAlign.center,
-      style: safeGoogleFont(
-        'Changa',
-        fontSize: 40.sp,
-        fontWeight: FontWeight.w400,
-        height: 0,
-        color: textColor,
+    return SizedBox(
+      width: 277.w,
+      height: 74.h,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          'Thamarat ثمرات',
+          textAlign: TextAlign.center,
+          style: safeGoogleFont(
+            'Changa',
+            fontSize: 40.sp,
+            fontWeight: FontWeight.w400,
+            height: 0,
+            color: textColor,
+          ),
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_fonts.dart';
+import '../utils/email_validation_method.dart';
 
 class LoginTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -26,6 +27,9 @@ class LoginTextField extends StatefulWidget {
 }
 
 class _LoginTextFieldState extends State<LoginTextField> {
+  Color bordercolor = AppColors.color3;
+  bool showErrorMessage = false;
+  String errorMessage = '';
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -49,8 +53,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                       height: 56.h,
                       decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
-                          side: const BorderSide(
-                              width: 1, color: AppColors.color3),
+                          side: BorderSide(width: 1, color: bordercolor),
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
@@ -66,13 +69,20 @@ class _LoginTextFieldState extends State<LoginTextField> {
             ),
           ),
           Positioned(
-            left: 14,
-            top: 41,
+            left: 14.w,
+            top: 30.h,
             child: SizedBox(
-              width: 98.w,
-              height: 21.h,
+              width: 220.w,
+              height: 56.h,
               child: TextFormField(
                 keyboardType: widget.keyboardType,
+                style: safeGoogleFont(
+                  'Cairo',
+                  color: AppColors.color3,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  height: 0,
+                ),
                 obscureText: widget.obscureText ?? false,
                 controller: widget.controller,
                 decoration: InputDecoration(
@@ -86,9 +96,67 @@ class _LoginTextFieldState extends State<LoginTextField> {
                     height: 0,
                   ),
                 ),
+                validator: (value) {
+                  if (widget.lable == 'البريد الالكتروني') {
+                    if (!isEmail(value ?? "")) {
+                      bordercolor = Colors.red;
+                      showErrorMessage = true;
+                      errorMessage =
+                          'البريد الإلكتروني  غير صحيح، حاول مرة أخرى';
+                      return '';
+                    }
+                    return null;
+                  } else if (widget.lable == 'كلمة المرور') {
+                    if (value!.length < 6) {
+                      bordercolor = Colors.red;
+                      showErrorMessage = true;
+                      errorMessage = 'كلمة المرور قصيرة جدًا، حاول مرة أخرى';
+                      return '';
+                    }
+                    return null;
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  if (showErrorMessage) {
+                    if (widget.lable == 'البريد الالكتروني') {
+                      if (isEmail(value)) {
+                        bordercolor = AppColors.color3;
+
+                        showErrorMessage = false;
+                      }
+                    } else if (widget.lable == 'كلمة المرور') {
+                      if (value.length >= 6) {
+                        bordercolor = AppColors.color3;
+                        showErrorMessage = false;
+                      }
+                    }
+                  }
+                },
               ),
             ),
           ),
+          Positioned(
+              left: 14.w,
+              top: 46.h,
+              child: Visibility(
+                visible:
+                    showErrorMessage, // Set this boolean value based on the validation condition
+                child: SizedBox(
+                  width: 220.w,
+                  height: 30.h,
+                  child: Text(
+                    errorMessage,
+                    textAlign: TextAlign.center,
+                    style: safeGoogleFont(
+                      'Cairo',
+                      color: Colors.red,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              )),
           Positioned(
             left: 218.w,
             top: 0.h,
@@ -96,8 +164,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
               width: 71.w,
               height: 21.h,
               child: FittedBox(
-                fit: BoxFit
-                    .scaleDown, // Scale the text down to fit the available space
+                fit: BoxFit.scaleDown,
                 child: Text(
                   widget.lable,
                   textAlign: TextAlign.right,

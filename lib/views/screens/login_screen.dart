@@ -317,9 +317,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 36.h,
                 ),
                 const CreateAnAccountWidget(),
-                SizedBox(
-                  height: 26.h,
-                )
               ],
             ),
           ),

@@ -21,7 +21,7 @@ class _CreateAnAccountWidgetState extends State<CreateAnAccountWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: MaterialButton(
+            child: TextButton(
               onPressed: () {
                 Navigator.push(
                   context,

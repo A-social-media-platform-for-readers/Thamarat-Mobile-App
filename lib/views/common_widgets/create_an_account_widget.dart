@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../screens/Identification_screen.dart';
+import '../screens/identification_screen.dart';
 import '../utils/app_fonts.dart';
 
 class CreateAnAccountWidget extends StatefulWidget {

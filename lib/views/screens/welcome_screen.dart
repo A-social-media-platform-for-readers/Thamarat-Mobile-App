@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/views/common_widgets/welcome_text.dart';
 import 'package:untitled/views/screens/login_screen.dart';
-import 'package:untitled/views/screens/Identification_screen.dart';
+import 'package:untitled/views/screens/identification_screen.dart';
 import 'package:untitled/views/utils/app_colors.dart';
 import '../common_widgets/welcome_screen_button.dart';
 import '../common_widgets/app_title.dart';
@@ -25,15 +25,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 53.h,
+                    height: 26.08.h,
                   ),
                   const AppTitle(
                     textColor: Colors.white,
+                  ),
+                  SizedBox(
+                    height: 15.59.h,
                   ),
                   Image.asset(
                     'assets/reading-list-bro-1.png',
                     width: 460.w,
                     height: 460.h,
+                  ),
+                  SizedBox(
+                    height: 37.42.h,
                   ),
                   const WelcomeText(),
                   SizedBox(

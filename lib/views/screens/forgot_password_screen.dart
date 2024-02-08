@@ -6,6 +6,7 @@ import 'package:untitled/views/utils/app_colors.dart';
 import 'package:untitled/views/utils/app_fonts.dart';
 import '../common_widgets/forgot_password_appbar.dart';
 import '../common_widgets/login_text_field.dart';
+import 'otp_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -15,8 +16,8 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,49 +71,88 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               SizedBox(
                 height: 12.0.h,
               ),
-              LoginTextField(
-                controller: emailController,
-                lable: 'البريد الالكتروني',
-                keyboardType: TextInputType.emailAddress,
-                hintText: 'example@gmail.com',
-              ),
-              SizedBox(
-                height: 44.0.h,
-              ),
-              MaterialButton(
-                onPressed: () {},
-                child: Container(
-                  width: 263.w,
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: AppColors.primary),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color(0xcc000000),
-                        offset: Offset(0, 0),
-                        blurRadius: 2,
-                      ),
-                    ],
-                  ),
-                  child: SizedBox(
-                    width: 149.w,
-                    height: 20.54.h,
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        'ارسال رمز التحقق',
-                        textAlign: TextAlign.center,
-                        style: safeGoogleFont(
-                          'Cairo',
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.primary,
+              Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    LoginTextField(
+                      controller: emailController,
+                      lable: 'البريد الالكتروني',
+                      keyboardType: TextInputType.emailAddress,
+                      hintText: 'example@gmail.com',
+                    ),
+                    SizedBox(
+                      height: 44.0.h,
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          setState(() {});
+                          final scaffoldContext = ScaffoldMessenger.of(context);
+                          scaffoldContext.hideCurrentSnackBar();
+                          scaffoldContext.showSnackBar(
+                            const SnackBar(
+                              backgroundColor: AppColors.color3,
+                              content: Text(
+                                "Loading ...",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              duration: Duration(seconds: 5),
+                            ),
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const OtpScreen()),
+                          );
+                        } else {
+                          setState(() {});
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            backgroundColor: AppColors.color3,
+                            content: Text(
+                              "يرجى التحقق من البيانات الخاصة بك",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ));
+                        }
+                      },
+                      child: Container(
+                        width: 263.w,
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: AppColors.primary),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color(0xcc000000),
+                              offset: Offset(0, 0),
+                              blurRadius: 2,
+                            ),
+                          ],
+                        ),
+                        child: SizedBox(
+                          width: 149.w,
+                          height: 20.54.h,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'ارسال رمز التحقق',
+                              textAlign: TextAlign.center,
+                              style: safeGoogleFont(
+                                'Cairo',
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.primary,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
               SizedBox(

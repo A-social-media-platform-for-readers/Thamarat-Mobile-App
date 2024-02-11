@@ -207,43 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Expanded(
                               child: InkWell(
-                                  onTap: () {
-                                    if (formKey.currentState!.validate()) {
-                                      setState(() {});
-                                      final scaffoldContext =
-                                          ScaffoldMessenger.of(context);
-                                      scaffoldContext.hideCurrentSnackBar();
-                                      scaffoldContext.showSnackBar(
-                                        const SnackBar(
-                                          backgroundColor: AppColors.color3,
-                                          content: Text(
-                                            "Loading ...",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          duration: Duration(seconds: 5),
-                                        ),
-                                      );
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const HomeScreen()),
-                                      );
-                                    } else {
-                                      setState(() {});
-                                      ScaffoldMessenger.of(context)
-                                          .hideCurrentSnackBar();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(const SnackBar(
-                                        backgroundColor: AppColors.color3,
-                                        content: Text(
-                                          "يرجى التحقق من البيانات الخاصة بك",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ));
-                                    }
-                                  },
+                                  onTap: loginFormValidation,
                                   child: const BackNextButtons(
                                     lable: 'دخول',
                                     textColor: Colors.white,
@@ -323,5 +287,37 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void loginFormValidation() {
+    if (formKey.currentState!.validate()) {
+      setState(() {});
+      final scaffoldContext = ScaffoldMessenger.of(context);
+      scaffoldContext.hideCurrentSnackBar();
+      scaffoldContext.showSnackBar(
+        const SnackBar(
+          backgroundColor: AppColors.color3,
+          content: Text(
+            "Loading ...",
+            style: TextStyle(color: Colors.white),
+          ),
+          duration: Duration(seconds: 5),
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
+    } else {
+      setState(() {});
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: AppColors.color3,
+        content: Text(
+          "يرجى التحقق من البيانات الخاصة بك",
+          style: TextStyle(color: Colors.white),
+        ),
+      ));
+    }
   }
 }

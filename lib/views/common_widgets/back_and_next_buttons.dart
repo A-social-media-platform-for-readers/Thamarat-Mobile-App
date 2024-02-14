@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/views/utils/app_fonts.dart';
 
-class BackNextButtons extends StatefulWidget {
+class BackNextButtons extends StatelessWidget {
   final String lable;
   final Color textColor;
   final Color buttonColor;
@@ -15,19 +15,14 @@ class BackNextButtons extends StatefulWidget {
   });
 
   @override
-  State<BackNextButtons> createState() => _BackNextButtonsState();
-}
-
-class _BackNextButtonsState extends State<BackNextButtons> {
-  @override
   Widget build(BuildContext context) {
     return Container(
         width: 140.w,
         height: 56.h,
         decoration: ShapeDecoration(
-          color: widget.buttonColor,
+          color: buttonColor,
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: widget.buttonColor),
+            side: BorderSide(width: 1, color: buttonColor),
             borderRadius: BorderRadius.circular(10),
           ),
           shadows: const [
@@ -43,11 +38,11 @@ class _BackNextButtonsState extends State<BackNextButtons> {
             child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            widget.lable,
+            lable,
             textAlign: TextAlign.center,
             style: safeGoogleFont(
               'Cairo',
-              color: widget.textColor,
+              color: textColor,
               fontSize: 18.sp,
               fontWeight: FontWeight.w700,
               height: 0,

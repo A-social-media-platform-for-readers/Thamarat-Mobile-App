@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_fonts.dart';
 
-class WelcomeScreenButton extends StatefulWidget {
+class WelcomeScreenButton extends StatelessWidget {
   final String lable;
   final Color textColor;
   final Color borderColor;
@@ -18,17 +18,12 @@ class WelcomeScreenButton extends StatefulWidget {
       required this.screen});
 
   @override
-  State<WelcomeScreenButton> createState() => _WelcomeScreenButtonState();
-}
-
-class _WelcomeScreenButtonState extends State<WelcomeScreenButton> {
-  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => widget.screen),
+          MaterialPageRoute(builder: (context) => screen),
         );
       },
       child: SizedBox(
@@ -43,9 +38,9 @@ class _WelcomeScreenButtonState extends State<WelcomeScreenButton> {
                 width: 297.w,
                 height: 56.h,
                 decoration: ShapeDecoration(
-                  color: widget.buttonColor,
+                  color: buttonColor,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 3, color: widget.borderColor),
+                    side: BorderSide(width: 3, color: borderColor),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -60,11 +55,11 @@ class _WelcomeScreenButtonState extends State<WelcomeScreenButton> {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    widget.lable,
+                    lable,
                     textAlign: TextAlign.center,
                     style: safeGoogleFont(
                       'Cairo',
-                      color: widget.textColor,
+                      color: textColor,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                       height: 0,

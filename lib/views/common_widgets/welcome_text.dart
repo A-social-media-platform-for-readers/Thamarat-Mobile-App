@@ -3,14 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_fonts.dart';
 
-class WelcomeText extends StatefulWidget {
+class WelcomeText extends StatelessWidget {
   const WelcomeText({super.key});
 
-  @override
-  State<WelcomeText> createState() => _WelcomeTextState();
-}
-
-class _WelcomeTextState extends State<WelcomeText> {
   @override
   Widget build(BuildContext context) {
     return Column(

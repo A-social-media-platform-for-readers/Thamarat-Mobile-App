@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PlatformButton extends StatefulWidget {
+class PlatformButton extends StatelessWidget {
   final String lable;
   final Color textColor;
   final String icon;
@@ -15,11 +15,6 @@ class PlatformButton extends StatefulWidget {
       required this.textColor});
 
   @override
-  State<PlatformButton> createState() => _PlatformButtonState();
-}
-
-class _PlatformButtonState extends State<PlatformButton> {
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 290.w,
@@ -30,7 +25,7 @@ class _PlatformButtonState extends State<PlatformButton> {
             width: 290.w,
             height: 52.h,
             decoration: ShapeDecoration(
-              color: widget.buttonColor,
+              color: buttonColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
               shadows: const [
@@ -47,9 +42,7 @@ class _PlatformButtonState extends State<PlatformButton> {
             left: 17.w,
             top: 10.h,
             child: SizedBox(
-                width: 32.62.w,
-                height: 32.62.h,
-                child: Image.asset(widget.icon)),
+                width: 32.62.w, height: 32.62.h, child: Image.asset(icon)),
           ),
           Center(
             child: Container(
@@ -61,10 +54,10 @@ class _PlatformButtonState extends State<PlatformButton> {
                 fit: BoxFit
                     .scaleDown, // Scale the text down to fit the available space
                 child: Text(
-                  widget.lable,
+                  lable,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: widget.textColor,
+                    color: textColor,
                     fontSize: 15.sp,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,

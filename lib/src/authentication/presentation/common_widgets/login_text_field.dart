@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../utils/app_colors.dart';
-import '../utils/app_fonts.dart';
-import '../utils/email_validation_method.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_fonts.dart';
+import '../../../core/utils/email_validation_method.dart';
 
 class LoginTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -70,7 +70,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
           ),
           Positioned(
             left: 14.w,
-            top: 30.h,
+            top: 32.h,
             child: SizedBox(
               width: 220.w,
               height: 56.h,
@@ -122,7 +122,6 @@ class _LoginTextFieldState extends State<LoginTextField> {
                     if (widget.lable == 'البريد الالكتروني') {
                       if (isEmail(value)) {
                         bordercolor = AppColors.color3;
-
                         showErrorMessage = false;
                       }
                     } else if (widget.lable == 'كلمة المرور') {
@@ -138,10 +137,9 @@ class _LoginTextFieldState extends State<LoginTextField> {
           ),
           Positioned(
               left: 14.w,
-              top: 46.h,
+              top: 50.h,
               child: Visibility(
-                visible:
-                    showErrorMessage, // Set this boolean value based on the validation condition
+                visible: showErrorMessage,
                 child: SizedBox(
                   width: 220.w,
                   height: 30.h,
@@ -179,11 +177,11 @@ class _LoginTextFieldState extends State<LoginTextField> {
             ),
           ),
           Positioned(
-            left: 258.w,
-            top: 39.h,
+            left: 253.0.w,
+            top: 30.0.h,
             child: SizedBox(
-              width: 30.w,
-              height: 25.h,
+              width: 30.0.w,
+              height: 25.0.h,
               child: widget.suffixIcon,
             ),
           ),

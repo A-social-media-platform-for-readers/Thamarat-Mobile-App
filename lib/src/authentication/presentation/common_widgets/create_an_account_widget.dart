@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../core/utils/app_fonts.dart';
 import '../screens/identification_screen.dart';
-import '../utils/app_fonts.dart';
 
-class CreateAnAccountWidget extends StatefulWidget {
+class CreateAnAccountWidget extends StatelessWidget {
   const CreateAnAccountWidget({super.key});
 
-  @override
-  State<CreateAnAccountWidget> createState() => _CreateAnAccountWidgetState();
-}
-
-class _CreateAnAccountWidgetState extends State<CreateAnAccountWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +17,7 @@ class _CreateAnAccountWidgetState extends State<CreateAnAccountWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child: TextButton(
+              child: MaterialButton(
                 onPressed: () {
                   Navigator.push(
                     context,

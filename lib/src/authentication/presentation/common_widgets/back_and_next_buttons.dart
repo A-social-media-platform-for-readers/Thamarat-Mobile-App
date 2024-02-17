@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/views/utils/app_fonts.dart';
+import '../../../core/utils/app_fonts.dart';
 
 class BackNextButtons extends StatelessWidget {
   final String lable;

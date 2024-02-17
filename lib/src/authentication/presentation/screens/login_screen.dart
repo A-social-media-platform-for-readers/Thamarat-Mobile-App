@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/views/common_widgets/back_and_next_buttons.dart';
-import 'package:untitled/views/common_widgets/platform_button.dart';
-import 'package:untitled/views/common_widgets/welcome_text.dart';
-import 'package:untitled/views/screens/forgot_password_screen.dart';
-import 'package:untitled/views/screens/home_screen.dart';
-import 'package:untitled/views/screens/welcome_screen.dart';
-import 'package:untitled/views/utils/app_colors.dart';
-import 'package:untitled/views/utils/app_fonts.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/back_and_next_buttons.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/platform_button.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/welcome_text.dart';
+import 'package:untitled/src/authentication/presentation/screens/forgot_password_screen.dart';
+import 'package:untitled/src/authentication/presentation/screens/home_screen.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_fonts.dart';
 import '../common_widgets/app_title.dart';
 import '../common_widgets/create_an_account_widget.dart';
 import '../common_widgets/login_text_field.dart';
@@ -189,12 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Expanded(
                               child: InkWell(
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const WelcomeScreen()),
-                                    );
+                                    Navigator.pop(context);
                                   },
                                   child: const BackNextButtons(
                                     lable: 'رجوع',
@@ -298,7 +292,8 @@ class _LoginScreenState extends State<LoginScreen> {
         const SnackBar(
           backgroundColor: AppColors.color3,
           content: Text(
-            "Loading ...",
+            "..... انتظر للتحميل",
+            textAlign: TextAlign.end,
             style: TextStyle(color: Colors.white),
           ),
           duration: Duration(seconds: 5),
@@ -315,6 +310,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: AppColors.color3,
         content: Text(
           "يرجى التحقق من البيانات الخاصة بك",
+          textAlign: TextAlign.end,
           style: TextStyle(color: Colors.white),
         ),
       ));

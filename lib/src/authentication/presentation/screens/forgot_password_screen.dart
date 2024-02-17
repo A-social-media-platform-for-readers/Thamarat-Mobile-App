@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/views/common_widgets/create_an_account_widget.dart';
-import 'package:untitled/views/screens/login_screen.dart';
-import 'package:untitled/views/utils/app_colors.dart';
-import 'package:untitled/views/utils/app_fonts.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/create_an_account_widget.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/forgot_password_button.dart';
+import 'package:untitled/src/authentication/presentation/screens/login_screen.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_fonts.dart';
 import '../common_widgets/forgot_password_appbar.dart';
 import '../common_widgets/login_text_field.dart';
 import 'otp_screen.dart';
@@ -25,7 +26,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leadingWidth: 31.89.w,
         leading: const ForgotPasswordAppBar(
           screen: LoginScreen(),
         ),
@@ -94,7 +94,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             const SnackBar(
                               backgroundColor: AppColors.color3,
                               content: Text(
-                                "Loading ...",
+                                "..... انتظر للتحميل",
+                                textAlign: TextAlign.end,
                                 style: TextStyle(color: Colors.white),
                               ),
                               duration: Duration(seconds: 5),
@@ -113,45 +114,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             backgroundColor: AppColors.color3,
                             content: Text(
                               "يرجى التحقق من البيانات الخاصة بك",
+                              textAlign: TextAlign.end,
                               style: TextStyle(color: Colors.white),
                             ),
                           ));
                         }
                       },
-                      child: Container(
-                        width: 263.w,
-                        height: 50.h,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: AppColors.primary),
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color(0xcc000000),
-                              offset: Offset(0, 0),
-                              blurRadius: 2,
-                            ),
-                          ],
-                        ),
-                        child: SizedBox(
-                          width: 149.w,
-                          height: 20.54.h,
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              'ارسال رمز التحقق',
-                              textAlign: TextAlign.center,
-                              style: safeGoogleFont(
-                                'Cairo',
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.primary,
-                              ),
-                            ),
-                          ),
-                        ),
+                      child: const ForgotPasswordButton(
+                        lable: 'ارسال رمز التحقق',
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/views/common_widgets/welcome_text.dart';
-import 'package:untitled/views/screens/login_screen.dart';
-import 'package:untitled/views/screens/identification_screen.dart';
-import 'package:untitled/views/utils/app_colors.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/welcome_text.dart';
+import 'package:untitled/src/authentication/presentation/screens/login_screen.dart';
+import 'package:untitled/src/authentication/presentation/screens/identification_screen.dart';
+import '../../../core/utils/app_colors.dart';
 import '../common_widgets/welcome_screen_button.dart';
 import '../common_widgets/app_title.dart';
 

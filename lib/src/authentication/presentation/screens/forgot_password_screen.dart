@@ -42,16 +42,20 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               SizedBox(
                 height: 39.38.h,
               ),
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  'نسيت كلمة المرور',
-                  textAlign: TextAlign.center,
-                  style: safeGoogleFont(
-                    'Cairo',
-                    fontSize: 24.sp,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
+              SizedBox(
+                width: 159.w,
+                height: 37.h,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    'نسيت كلمة المرور',
+                    textAlign: TextAlign.center,
+                    style: safeGoogleFont(
+                      'Cairo',
+                      fontSize: 24.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ),
@@ -63,7 +67,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   style: safeGoogleFont(
                     'Cairo',
                     fontSize: 13.sp,
-                    color: const Color(0xff626262),
+                    color: AppColors.dimGray,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -92,7 +96,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           scaffoldContext.hideCurrentSnackBar();
                           scaffoldContext.showSnackBar(
                             const SnackBar(
-                              backgroundColor: AppColors.color3,
+                              backgroundColor: AppColors.darkGray,
                               content: Text(
                                 "..... انتظر للتحميل",
                                 textAlign: TextAlign.end,
@@ -111,7 +115,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
-                            backgroundColor: AppColors.color3,
+                            backgroundColor: AppColors.darkGray,
                             content: Text(
                               "يرجى التحقق من البيانات الخاصة بك",
                               textAlign: TextAlign.end,

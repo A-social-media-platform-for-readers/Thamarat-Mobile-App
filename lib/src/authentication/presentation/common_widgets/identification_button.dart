@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/src/core/utils/app_colors.dart';
 
 import '../../../core/utils/app_fonts.dart';
 
@@ -41,7 +42,7 @@ class _IdentificationButtonState extends State<IdentificationButton>
 
     // Define the color animation
     _colorAnimation =
-        ColorTween(begin: const Color(0xffe6e6e6), end: widget.newColor)
+        ColorTween(begin: AppColors.lightGray, end: widget.newColor)
             .animate(_animationController);
   }
 
@@ -96,7 +97,7 @@ class _IdentificationButtonState extends State<IdentificationButton>
                             'Cairo',
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xff2a2a2a),
+                            color: AppColors.charcoal,
                           ),
                         ),
                       ),

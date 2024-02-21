@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/src/core/utils/app_colors.dart';
 import '../../../core/utils/app_fonts.dart';
 import '../screens/identification_screen.dart';
 
@@ -36,7 +37,7 @@ class CreateAnAccountWidget extends StatelessWidget {
                         'إنشاء حساب',
                         style: safeGoogleFont(
                           'Cairo',
-                          color: const Color(0xFF4CAF50),
+                          color: AppColors.shamrockGreen,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w600,
                           height: 0,

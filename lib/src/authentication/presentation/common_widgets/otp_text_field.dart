@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/src/core/utils/app_colors.dart';
 
 class OtpTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -23,7 +24,7 @@ class OtpTextField extends StatelessWidget {
         margin: EdgeInsetsDirectional.only(end: 8.42.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: const Color(0xffe2e2e2),
+          color: AppColors.silver,
         ),
         child: Center(
           child: TextFormField(

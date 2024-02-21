@@ -57,7 +57,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   const WelcomeScreenButton(
                     lable: 'إنشاء حساب',
-                    textColor: AppColors.color2,
+                    textColor: AppColors.springGreen,
                     borderColor: Colors.white,
                     buttonColor: Colors.white,
                     screen: IdentificationScreen(),

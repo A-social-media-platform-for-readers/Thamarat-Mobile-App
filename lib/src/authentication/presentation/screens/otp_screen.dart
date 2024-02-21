@@ -193,7 +193,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           scaffoldContext.hideCurrentSnackBar();
                           scaffoldContext.showSnackBar(
                             const SnackBar(
-                              backgroundColor: AppColors.color3,
+                              backgroundColor: AppColors.darkGray,
                               content: Text(
                                 "..... انتظر للتحميل",
                                 textAlign: TextAlign.end,
@@ -213,7 +213,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
-                            backgroundColor: AppColors.color3,
+                            backgroundColor: AppColors.darkGray,
                             content: Text(
                               "يرجى التحقق من البيانات الخاصة بك",
                               textAlign: TextAlign.end,

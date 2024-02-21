@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 side: BorderSide(
                                   width: 1,
                                   strokeAlign: BorderSide.strokeAlignCenter,
-                                  color: Color(0xFF8B8B8B),
+                                  color: AppColors.darkGray,
                                 ),
                               ),
                             ),
@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               'ذكرني',
                                               style: safeGoogleFont(
                                                 'Cairo',
-                                                color: const Color(0xFF1877F2),
+                                                color: AppColors.facebookBlue,
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w500,
                                                 height: 0,
@@ -269,7 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const PlatformButton(
                     lable: 'Facebook',
                     icon: 'assets/vector.png',
-                    buttonColor: Color(0xFF1877F2),
+                    buttonColor: AppColors.facebookBlue,
                     textColor: Colors.white),
                 SizedBox(
                   height: 36.h,
@@ -290,7 +290,7 @@ class _LoginScreenState extends State<LoginScreen> {
       scaffoldContext.hideCurrentSnackBar();
       scaffoldContext.showSnackBar(
         const SnackBar(
-          backgroundColor: AppColors.color3,
+          backgroundColor: AppColors.darkGray,
           content: Text(
             "..... انتظر للتحميل",
             textAlign: TextAlign.end,
@@ -307,7 +307,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {});
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        backgroundColor: AppColors.color3,
+        backgroundColor: AppColors.darkGray,
         content: Text(
           "يرجى التحقق من البيانات الخاصة بك",
           textAlign: TextAlign.end,

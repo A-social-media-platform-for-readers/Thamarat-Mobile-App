@@ -105,7 +105,7 @@ class _ResetPsswordScreenState extends State<ResetPsswordScreen> {
                           scaffoldContext.hideCurrentSnackBar();
                           scaffoldContext.showSnackBar(
                             const SnackBar(
-                              backgroundColor: AppColors.color3,
+                              backgroundColor: AppColors.darkGray,
                               content: Text(
                                 "..... انتظر للتحميل",
                                 textAlign: TextAlign.end,
@@ -125,7 +125,7 @@ class _ResetPsswordScreenState extends State<ResetPsswordScreen> {
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
-                          backgroundColor: AppColors.color3,
+                          backgroundColor: AppColors.darkGray,
                           content: Text(
                             "كلمة المرور غير مطابقة",
                             textAlign: TextAlign.end,

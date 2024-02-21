@@ -27,7 +27,7 @@ class LoginTextField extends StatefulWidget {
 }
 
 class _LoginTextFieldState extends State<LoginTextField> {
-  Color bordercolor = AppColors.color3;
+  Color bordercolor = AppColors.darkGray;
   bool showErrorMessage = false;
   String errorMessage = '';
   @override
@@ -78,7 +78,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                 keyboardType: widget.keyboardType,
                 style: safeGoogleFont(
                   'Cairo',
-                  color: AppColors.color3,
+                  color: AppColors.darkGray,
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
                   height: 0,
@@ -90,7 +90,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                   hintText: widget.hintText,
                   hintStyle: safeGoogleFont(
                     'Cairo',
-                    color: AppColors.color3,
+                    color: AppColors.darkGray,
                     fontSize: 11,
                     fontWeight: FontWeight.w500,
                     height: 0,
@@ -121,12 +121,12 @@ class _LoginTextFieldState extends State<LoginTextField> {
                   if (showErrorMessage) {
                     if (widget.lable == 'البريد الالكتروني') {
                       if (isEmail(value)) {
-                        bordercolor = AppColors.color3;
+                        bordercolor = AppColors.darkGray;
                         showErrorMessage = false;
                       }
                     } else if (widget.lable == 'كلمة المرور') {
                       if (value.length >= 6) {
-                        bordercolor = AppColors.color3;
+                        bordercolor = AppColors.darkGray;
                         showErrorMessage = false;
                       }
                     }
@@ -168,7 +168,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                   textAlign: TextAlign.right,
                   style: safeGoogleFont(
                     'Cairo',
-                    color: AppColors.color3,
+                    color: AppColors.darkGray,
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w500,
                   ),

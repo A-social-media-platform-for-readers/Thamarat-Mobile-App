@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_fonts.dart';
-import '../../../core/utils/email_validation_method.dart';
+import '../utils/email_validation_method.dart';
 
 class LoginTextField extends StatefulWidget {
   final TextEditingController controller;
-  final String lable;
+  final String? lable;
   final TextInputType keyboardType;
   final bool? obscureText;
   final String hintText;
@@ -15,7 +15,7 @@ class LoginTextField extends StatefulWidget {
   const LoginTextField(
       {super.key,
       required this.controller,
-      required this.lable,
+      this.lable,
       required this.keyboardType,
       this.obscureText,
       required this.hintText,
@@ -73,7 +73,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
             top: 32.h,
             child: SizedBox(
               width: 220.w,
-              height: 56.h,
+              height: 52.h,
               child: TextFormField(
                 keyboardType: widget.keyboardType,
                 style: safeGoogleFont(
@@ -90,7 +90,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                   hintText: widget.hintText,
                   hintStyle: safeGoogleFont(
                     'Cairo',
-                    color: AppColors.darkGray,
+                    color: AppColors.darkGray.withOpacity(0.66),
                     fontSize: 11,
                     fontWeight: FontWeight.w500,
                     height: 0,
@@ -149,7 +149,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                     style: safeGoogleFont(
                       'Cairo',
                       color: Colors.red,
-                      fontSize: 11,
+                      fontSize: 10,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -157,14 +157,14 @@ class _LoginTextFieldState extends State<LoginTextField> {
               )),
           Positioned(
             left: 218.w,
-            top: 0.h,
+            top: 0,
             child: SizedBox(
               width: 71.w,
               height: 21.h,
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  widget.lable,
+                  widget.lable ?? '',
                   textAlign: TextAlign.right,
                   style: safeGoogleFont(
                     'Cairo',

@@ -5,7 +5,6 @@ import '../../../core/utils/app_fonts.dart';
 class WelcomeScreenButton extends StatelessWidget {
   final String lable;
   final Color textColor;
-  final Color borderColor;
   final Color buttonColor;
   final Widget screen;
 
@@ -13,7 +12,6 @@ class WelcomeScreenButton extends StatelessWidget {
       {super.key,
       required this.lable,
       required this.textColor,
-      required this.borderColor,
       required this.buttonColor,
       required this.screen});
 
@@ -40,7 +38,7 @@ class WelcomeScreenButton extends StatelessWidget {
                 decoration: ShapeDecoration(
                   color: buttonColor,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 3, color: borderColor),
+                    side: const BorderSide(width: 3, color: Colors.white),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),

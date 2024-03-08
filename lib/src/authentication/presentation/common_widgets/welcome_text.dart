@@ -24,7 +24,6 @@ class WelcomeText extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
-                      height: 0,
                     ),
                   ),
                   TextSpan(
@@ -34,7 +33,6 @@ class WelcomeText extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
-                      height: 0,
                     ),
                   ),
                 ],

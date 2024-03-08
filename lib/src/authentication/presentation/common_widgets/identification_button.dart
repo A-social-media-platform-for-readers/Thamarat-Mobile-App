@@ -1,119 +1,113 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
-
 import '../../../core/utils/app_fonts.dart';
 
 class IdentificationButton extends StatefulWidget {
-  final String identity;
+  final String startIdentityIcon;
+  final String identityName;
+  final String endIdentityIcon;
   final Color newColor;
-  final String icon;
+
   const IdentificationButton(
       {super.key,
-      required this.identity,
+      required this.startIdentityIcon,
+      required this.endIdentityIcon,
       required this.newColor,
-      required this.icon});
+      required this.identityName});
 
   @override
   State<IdentificationButton> createState() => _IdentificationButtonState();
 }
 
-class _IdentificationButtonState extends State<IdentificationButton>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _widthAnimation;
-  late Animation<double> _hegihtAnimation;
-  late Animation<Color?> _colorAnimation;
+class _IdentificationButtonState extends State<IdentificationButton> {
+  double widthAnimation = 160.w;
+  Color? colorAnimation = AppColors.lightGray;
+  late String identityIcontAnimation;
+  late String checkboxIcontAnimation = "assets/Icons (2).png";
+  Color? textColorAnimation = AppColors.charcoal;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-
-    // Define the size animation
-    _widthAnimation = Tween<double>(begin: 134.0.w, end: 144.0.w)
-        .animate(_animationController);
-
-    _hegihtAnimation =
-        Tween<double>(begin: 47.0.h, end: 57.0.h).animate(_animationController);
-
-    // Define the color animation
-    _colorAnimation =
-        ColorTween(begin: AppColors.lightGray, end: widget.newColor)
-            .animate(_animationController);
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  void _onButtonPressed() {
-    if (_animationController.isCompleted) {
-      _animationController.reverse();
-    } else {
-      _animationController.forward();
-    }
+    identityIcontAnimation = widget.startIdentityIcon;
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: _onButtonPressed,
-        child: AnimatedBuilder(
-          animation: _animationController,
-          builder: (context, child) {
-            return Container(
-              width: _widthAnimation.value,
-              height: _hegihtAnimation.value,
-              decoration: BoxDecoration(
-                color: _colorAnimation.value,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 18.5,
-                      height: 18.5,
-                      child: Image.asset(
-                        widget.icon,
-                      ),
+        onTap: () {
+          setState(() {
+            widthAnimation = widthAnimation == 160.w ? 268.w : 160.w;
+            identityIcontAnimation =
+                identityIcontAnimation == widget.startIdentityIcon
+                    ? widget.endIdentityIcon
+                    : widget.startIdentityIcon;
+            checkboxIcontAnimation =
+                checkboxIcontAnimation == "assets/Icons (2).png"
+                    ? "assets/Icons (1).png"
+                    : "assets/Icons (2).png";
+            colorAnimation = colorAnimation == AppColors.lightGray
+                ? widget.newColor
+                : AppColors.lightGray;
+            textColorAnimation = textColorAnimation == AppColors.charcoal
+                ? Colors.white
+                : AppColors.charcoal;
+          });
+        },
+        child: AnimatedContainer(
+          duration: const Duration(microseconds: 300),
+          child: Container(
+            width: widthAnimation,
+            height: 47.h,
+            decoration: BoxDecoration(
+              color: colorAnimation,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: SizedBox(
+              width: double.infinity,
+              height: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 18,
+                    height: 15,
+                    child: Image.asset(
+                      identityIcontAnimation,
                     ),
-                    Center(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 11.w),
+                  ),
+                  Center(
+                    child: Container(
+                      width: 38.w,
+                      height: 24.h,
+                      margin: EdgeInsets.symmetric(horizontal: 11.w),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
                         child: Text(
-                          widget.identity,
+                          widget.identityName,
                           textAlign: TextAlign.center,
                           style: safeGoogleFont(
                             'Cairo',
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.charcoal,
+                            color: textColorAnimation,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 24.w,
-                      height: 24.h,
-                      child: Image.asset(
-                        'assets/Icons (2).png',
-                      ),
+                  ),
+                  SizedBox(
+                    width: 24.w,
+                    height: 24.h,
+                    child: Image.asset(
+                      checkboxIcontAnimation,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          },
+            ),
+          ),
         ));
   }
 }

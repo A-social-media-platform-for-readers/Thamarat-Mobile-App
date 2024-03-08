@@ -48,7 +48,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   const WelcomeScreenButton(
                     lable: 'لدي حساب بالفعل',
                     textColor: Colors.white,
-                    borderColor: Colors.white,
                     buttonColor: AppColors.primary,
                     screen: LoginScreen(),
                   ),
@@ -58,7 +57,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   const WelcomeScreenButton(
                     lable: 'إنشاء حساب',
                     textColor: AppColors.springGreen,
-                    borderColor: Colors.white,
                     buttonColor: Colors.white,
                     screen: IdentificationScreen(),
                   ),

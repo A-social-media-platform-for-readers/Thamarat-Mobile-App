@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_fonts.dart';
-import '../utils/email_validation_method.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_fonts.dart';
+import '../../utils/email_validation_method.dart';
 
 class SignUpTextField extends StatefulWidget {
   final TextEditingController controller;

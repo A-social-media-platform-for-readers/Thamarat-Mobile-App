@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/authentication/presentation/common_widgets/create_an_account_widget.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/forgot_password_button.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/otp_text_field.dart';
-import 'package:untitled/src/authentication/presentation/screens/forgot_password_screen.dart';
-import 'package:untitled/src/authentication/presentation/screens/reset_password_screen.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_fonts.dart';
-import '../common_widgets/forgot_password_appbar.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/forgot%20password/forgot_password_button.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/forgot%20password/otp_text_field.dart';
+import 'package:untitled/src/authentication/presentation/screens/forgot%20password/forgot_password_screen.dart';
+import 'package:untitled/src/authentication/presentation/screens/forgot%20password/reset_password_screen.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_fonts.dart';
+import '../../common_widgets/forgot password/forgot_password_appbar.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});

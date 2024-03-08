@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/forgot_password_button.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/forgot%20password/forgot_password_button.dart';
 import 'package:untitled/src/authentication/presentation/common_widgets/login_text_field.dart';
-import 'package:untitled/src/authentication/presentation/screens/otp_screen.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_fonts.dart';
-import '../common_widgets/create_an_account_widget.dart';
-import '../common_widgets/forgot_password_appbar.dart';
-import 'home_screen.dart';
+import 'package:untitled/src/authentication/presentation/screens/forgot%20password/otp_screen.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_fonts.dart';
+import '../../common_widgets/create_an_account_widget.dart';
+import '../../common_widgets/forgot password/forgot_password_appbar.dart';
+import '../../../../Book management/presentation/screens/home_screen.dart';
 
 class ResetPsswordScreen extends StatefulWidget {
   const ResetPsswordScreen({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
 import '../../../core/utils/app_fonts.dart';
-import '../screens/identification_screen.dart';
+import '../screens/sign up/sign_up_main_screen.dart';
 
 class CreateAnAccountWidget extends StatelessWidget {
   const CreateAnAccountWidget({super.key});
@@ -23,7 +23,7 @@ class CreateAnAccountWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const IdentificationScreen()),
+                        builder: (context) => const SignUpMainScreen()),
                   );
                 },
                 child: SizedBox(

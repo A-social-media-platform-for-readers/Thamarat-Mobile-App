@@ -3,13 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/authentication/presentation/common_widgets/back_and_next_buttons.dart';
 import 'package:untitled/src/authentication/presentation/common_widgets/platform_button.dart';
 import 'package:untitled/src/authentication/presentation/common_widgets/welcome_text.dart';
-import 'package:untitled/src/authentication/presentation/screens/forgot_password_screen.dart';
-import 'package:untitled/src/authentication/presentation/screens/home_screen.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_fonts.dart';
-import '../common_widgets/app_title.dart';
-import '../common_widgets/create_an_account_widget.dart';
-import '../common_widgets/login_text_field.dart';
+import 'package:untitled/src/authentication/presentation/screens/forgot%20password/forgot_password_screen.dart';
+import 'package:untitled/src/authentication/presentation/screens/google_sign_in_test.dart';
+import 'package:untitled/src/Book%20management/presentation/screens/home_screen.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_fonts.dart';
+import '../../common_widgets/welcome/app_title.dart';
+import '../../common_widgets/create_an_account_widget.dart';
+import '../../common_widgets/login_text_field.dart';
+import '../../utils/google_sign_in_api.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isPasswordHidden = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,27 +189,24 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: InkWell(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const BackNextButtons(
-                                    lable: 'رجوع',
-                                    buttonColor: Colors.white,
-                                    textColor: AppColors.primary,
-                                  )),
-                            ),
+                                child: BackNextButtons(
+                              lable: 'رجوع',
+                              buttonColor: Colors.white,
+                              textColor: AppColors.primary,
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            )),
                             SizedBox(
                               width: 15.w,
                             ),
                             Expanded(
-                              child: InkWell(
-                                  onTap: loginFormValidation,
-                                  child: const BackNextButtons(
-                                    lable: 'دخول',
-                                    textColor: Colors.white,
-                                    buttonColor: AppColors.primary,
-                                  )),
+                              child: BackNextButtons(
+                                lable: 'دخول',
+                                textColor: Colors.white,
+                                buttonColor: AppColors.primary,
+                                onTap: loginFormValidation,
+                              ),
                             ),
                           ],
                         ),
@@ -258,19 +258,39 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                const PlatformButton(
-                    lable: 'Google',
-                    icon: 'assets/group-272.png',
-                    buttonColor: Colors.white,
-                    textColor: Colors.black),
+                PlatformButton(
+                  lable: 'Google',
+                  icon: 'assets/group-272.png',
+                  buttonColor: Colors.white,
+                  textColor: Colors.black,
+                  onPressed: () async {
+                    try {
+                      var user = await GoogleSignInApi.login();
+                      if (user != null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GoogleSignInTest(
+                                    user: user.displayName!,
+                                    email: user.email,
+                                  )),
+                        );
+                      }
+                    } catch (error) {
+                      print(error);
+                    }
+                  },
+                ),
                 SizedBox(
                   height: 11.h,
                 ),
-                const PlatformButton(
-                    lable: 'Facebook',
-                    icon: 'assets/vector.png',
-                    buttonColor: AppColors.facebookBlue,
-                    textColor: Colors.white),
+                PlatformButton(
+                  lable: 'Facebook',
+                  icon: 'assets/vector.png',
+                  buttonColor: AppColors.facebookBlue,
+                  textColor: Colors.white,
+                  onPressed: () {},
+                ),
                 SizedBox(
                   height: 36.h,
                 ),

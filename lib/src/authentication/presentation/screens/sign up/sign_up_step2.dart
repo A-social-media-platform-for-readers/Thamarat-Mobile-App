@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/sign_up_text_field.dart';
+import 'package:untitled/src/authentication/presentation/common_widgets/sign%20up/sign_up_text_field.dart';
 
 class SignUpStep2 extends StatelessWidget {
   const SignUpStep2({super.key});

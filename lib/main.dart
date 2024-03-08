@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/src/authentication/presentation/screens/welcome_screen.dart';
+import 'package:untitled/src/authentication/presentation/screens/welcome/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());

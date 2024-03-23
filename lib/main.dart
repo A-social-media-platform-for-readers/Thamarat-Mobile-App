@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/src/core/custom_bottomn_nav_bar.dart';
 import 'package:untitled/src/authentication/presentation/screens/welcome/welcome_screen.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const WelcomeScreen(),
+      child: const CustomBottomNavBar(),
     );
   }
 }

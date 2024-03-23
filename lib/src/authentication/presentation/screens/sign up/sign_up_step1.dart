@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
-import '../../common_widgets/sign up/identification_button.dart';
+import '../../widgets/sign up/identification_button.dart';
 
 class SignUpStep1 extends StatelessWidget {
   const SignUpStep1({super.key});

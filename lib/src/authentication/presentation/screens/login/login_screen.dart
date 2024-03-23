@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/back_and_next_buttons.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/platform_button.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/welcome_text.dart';
+import 'package:untitled/src/core/custom_bottomn_nav_bar.dart';
+import 'package:untitled/src/authentication/presentation/widgets/back_and_next_buttons.dart';
+import 'package:untitled/src/authentication/presentation/widgets/platform_button.dart';
+import 'package:untitled/src/authentication/presentation/widgets/welcome_text.dart';
 import 'package:untitled/src/authentication/presentation/screens/forgot%20password/forgot_password_screen.dart';
-import 'package:untitled/src/authentication/presentation/screens/google_sign_in_test.dart';
-import 'package:untitled/src/Book%20management/presentation/screens/home_screen.dart';
+import 'package:untitled/src/Book%20management/presentation/screens/presentation/screens/home_screen.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
-import '../../common_widgets/welcome/app_title.dart';
-import '../../common_widgets/create_an_account_widget.dart';
-import '../../common_widgets/login_text_field.dart';
-import '../../utils/google_sign_in_api.dart';
+import '../../widgets/welcome/app_title.dart';
+import '../../widgets/create_an_account_widget.dart';
+import '../../widgets/login_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -58,9 +57,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardType: TextInputType.emailAddress,
                         hintText: 'example@gmail.com',
                       ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
                       LoginTextField(
                         controller: passwordController,
                         lable: 'كلمة المرور',
@@ -95,9 +91,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             setState(() {});
                           },
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
                       ),
                       SizedBox(
                           width: 286.95.w,
@@ -263,23 +256,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   icon: 'assets/group-272.png',
                   buttonColor: Colors.white,
                   textColor: Colors.black,
-                  onPressed: () async {
-                    try {
-                      var user = await GoogleSignInApi.login();
-                      if (user != null) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GoogleSignInTest(
-                                    user: user.displayName!,
-                                    email: user.email,
-                                  )),
-                        );
-                      }
-                    } catch (error) {
-                      print(error);
-                    }
-                  },
+                  onPressed: () {},
                 ),
                 SizedBox(
                   height: 11.h,
@@ -321,7 +298,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const CustomBottomNavBar()),
       );
     } else {
       setState(() {});

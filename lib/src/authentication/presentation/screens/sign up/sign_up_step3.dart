@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../common_widgets/sign up/sign_up_text_field.dart';
+import '../../widgets/sign up/sign_up_text_field.dart';
 
 class SignUpStep3 extends StatelessWidget {
   const SignUpStep3({super.key});

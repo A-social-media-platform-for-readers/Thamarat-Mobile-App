@@ -32,9 +32,10 @@ class _LoginTextFieldState extends State<LoginTextField> {
   String errorMessage = '';
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: 297.w,
       height: 79.h,
+      margin: EdgeInsets.only(bottom: 4.h),
       child: Stack(
         children: [
           Positioned(

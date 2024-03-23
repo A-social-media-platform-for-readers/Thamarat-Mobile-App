@@ -13,4 +13,6 @@ abstract class AppColors {
   static const Color shamrockGreen = Color(0xFF4CAF50);
   static const Color coral = Color(0xFFF78464);
   static const Color cornflowerBlue = Color(0xFF699CFF);
+  static const Color peachPuff = Color(0xFFFFBE9D);
+  static const Color lightBlueishTeal = Color(0xFF90CAF9);
 }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/sign%20up/sign_up_stepper.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/sign%20up/sign_up_text.dart';
+import 'package:untitled/src/authentication/presentation/widgets/sign%20up/sign_up_stepper.dart';
+import 'package:untitled/src/authentication/presentation/widgets/sign%20up/sign_up_text.dart';
 import 'package:untitled/src/authentication/presentation/screens/sign%20up/sign_up_step1.dart';
 import 'package:untitled/src/authentication/presentation/screens/sign%20up/sign_up_step2.dart';
 import 'package:untitled/src/authentication/presentation/screens/sign%20up/sign_up_step3.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
-import '../../common_widgets/back_and_next_buttons.dart';
-import '../../common_widgets/welcome_text.dart';
+import '../../widgets/back_and_next_buttons.dart';
+import '../../widgets/welcome_text.dart';
 
 class SignUpMainScreen extends StatefulWidget {
   const SignUpMainScreen({

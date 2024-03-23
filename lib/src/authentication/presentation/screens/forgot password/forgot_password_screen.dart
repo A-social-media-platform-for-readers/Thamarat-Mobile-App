@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/create_an_account_widget.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/forgot%20password/forgot_password_button.dart';
+import 'package:untitled/src/authentication/presentation/widgets/create_an_account_widget.dart';
+import 'package:untitled/src/authentication/presentation/widgets/forgot%20password/forgot_password_button.dart';
 import 'package:untitled/src/authentication/presentation/screens/login/login_screen.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
-import '../../common_widgets/forgot password/forgot_password_appbar.dart';
-import '../../common_widgets/login_text_field.dart';
+import '../../widgets/forgot password/forgot_password_appbar.dart';
+import '../../widgets/login_text_field.dart';
 import 'otp_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {

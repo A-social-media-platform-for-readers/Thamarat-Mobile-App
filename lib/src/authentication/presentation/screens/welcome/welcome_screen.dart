@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/src/authentication/presentation/common_widgets/welcome_text.dart';
+import 'package:untitled/src/authentication/presentation/widgets/welcome_text.dart';
 import 'package:untitled/src/authentication/presentation/screens/login/login_screen.dart';
 import 'package:untitled/src/authentication/presentation/screens/sign%20up/sign_up_main_screen.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../common_widgets/welcome/welcome_screen_button.dart';
-import '../../common_widgets/welcome/app_title.dart';
+import '../../widgets/welcome/welcome_screen_button.dart';
+import '../../widgets/welcome/app_title.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});

@@ -7,48 +7,68 @@ class SignUpStep2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 15.h,
-        ),
-        SignUpTextField(
-          controller: TextEditingController(),
-          keyboardType: TextInputType.emailAddress,
-          obscureText: false,
-          hintText: 'اسم المستخدم',
-        ),
-        SizedBox(
-          height: 15.02.h,
-        ),
-        SignUpTextField(
-          controller: TextEditingController(),
-          keyboardType: TextInputType.emailAddress,
-          obscureText: false,
-          hintText: 'البريد الالكتروني',
-        ),
-        SizedBox(
-          height: 15.02.h,
-        ),
-        SignUpTextField(
-          controller: TextEditingController(),
-          keyboardType: TextInputType.emailAddress,
-          obscureText: false,
-          hintText: 'كلمة المرور',
-        ),
-        SizedBox(
-          height: 15.02.h,
-        ),
-        SignUpTextField(
-          controller: TextEditingController(),
-          keyboardType: TextInputType.emailAddress,
-          obscureText: false,
-          hintText: 'تاكيد كلمة المرور',
-        ),
-        SizedBox(
-          height: 165.h,
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 15.h,
+          ),
+          SignUpTextField(
+            controller: TextEditingController(),
+            keyboardType: TextInputType.emailAddress,
+            obscureText: false,
+            hintText: 'اسم المستخدم',
+          ),
+          SizedBox(
+            height: 15.02.h,
+          ),
+          SignUpTextField(
+            controller: TextEditingController(),
+            keyboardType: TextInputType.emailAddress,
+            obscureText: false,
+            hintText: 'البريد الالكتروني',
+          ),
+          SizedBox(
+            height: 15.02.h,
+          ),
+          SignUpTextField(
+            controller: TextEditingController(),
+            keyboardType: TextInputType.emailAddress,
+            obscureText: false,
+            hintText: 'كلمة المرور',
+          ),
+          SizedBox(
+            height: 15.02.h,
+          ),
+          SignUpTextField(
+            controller: TextEditingController(),
+            keyboardType: TextInputType.emailAddress,
+            obscureText: false,
+            hintText: 'تاكيد كلمة المرور',
+          ),
+          SizedBox(
+            height: 15.02.h,
+          ),
+          SignUpTextField(
+            controller: TextEditingController(),
+            keyboardType: TextInputType.emailAddress,
+            obscureText: false,
+            hintText: 'تاريخ الميلاد',
+          ),
+          SizedBox(
+            height: 15.02.h,
+          ),
+          SignUpTextField(
+            controller: TextEditingController(),
+            keyboardType: TextInputType.emailAddress,
+            obscureText: false,
+            hintText: 'الجنس',
+          ),
+          SizedBox(
+            height: 45.02.h,
+          ),
+        ],
+      ),
     );
   }
 }

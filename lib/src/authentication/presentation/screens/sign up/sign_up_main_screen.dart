@@ -50,15 +50,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                       ? const SignUpStep1()
                       : currentStep == 2
                           ? const SignUpStep2()
-                          : currentStep == 3
-                              ? const SignUpStep3()
-                              : const Text(
-                                  "done!",
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.blue,
-                                  ),
-                                )),
+                          : const SignUpStep3()),
               SizedBox(
                 width: 60.w,
               ),

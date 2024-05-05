@@ -5,7 +5,6 @@ import 'package:untitled/src/authentication/presentation/widgets/back_and_next_b
 import 'package:untitled/src/authentication/presentation/widgets/platform_button.dart';
 import 'package:untitled/src/authentication/presentation/widgets/welcome_text.dart';
 import 'package:untitled/src/authentication/presentation/screens/forgot%20password/forgot_password_screen.dart';
-import 'package:untitled/src/Book%20management/presentation/screens/presentation/screens/home_screen.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
 import '../../widgets/welcome/app_title.dart';

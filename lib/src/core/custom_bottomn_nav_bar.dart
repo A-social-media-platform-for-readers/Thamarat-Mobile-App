@@ -6,6 +6,7 @@ import 'package:untitled/src/Book%20management/presentation/screens/presentation
 import 'package:untitled/src/Book%20management/presentation/screens/presentation/screens/profile_screen.dart';
 import 'package:untitled/src/Book%20management/presentation/screens/presentation/screens/social_media_screen.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
+import 'package:untitled/src/core/utils/assets.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({super.key});
@@ -32,7 +33,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     return [
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
-          "assets/home.svg",
+          AssetsData.homeIcon,
           color: _selectedIndex == 0 ? Colors.white : Colors.black,
         ),
         title: _selectedIndex == 0 ? "Home" : null,
@@ -47,7 +48,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
-          "assets/Chat_Conversation_Circle.svg",
+          AssetsData.socialMediaIcon,
           color: _selectedIndex == 1 ? Colors.white : Colors.black,
         ),
         title: _selectedIndex == 1 ? "Social Media" : null,
@@ -62,7 +63,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
-          "assets/Download_Package.svg",
+          AssetsData.downloadIcon,
           color: _selectedIndex == 2 ? Colors.white : Colors.black,
         ),
         title: _selectedIndex == 2 ? "Download" : null,

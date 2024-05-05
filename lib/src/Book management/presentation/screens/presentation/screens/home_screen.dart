@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:untitled/src/Book%20management/presentation/screens/presentation/widget/gene_/book_list_view_item.dart';
 import 'package:untitled/src/Book%20management/presentation/screens/presentation/widget/gene_/gene_container.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
 import 'package:untitled/src/core/utils/app_fonts.dart';
+import 'package:untitled/src/core/utils/assets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -32,9 +31,7 @@ class HomeScreen extends StatelessWidget {
                       icon: SizedBox(
                         width: 24.w,
                         height: 24.h,
-                        child: SvgPicture.asset(
-                          "assets/Hamburger_LG.svg",
-                        ),
+                        child: SvgPicture.asset(AssetsData.homeList),
                       ),
                       onPressed: () {},
                     ),
@@ -87,9 +84,7 @@ class HomeScreen extends StatelessWidget {
                         icon: SizedBox(
                           width: 24.w,
                           height: 24.h,
-                          child: SvgPicture.asset(
-                            "assets/Bell_Notification.svg",
-                          ),
+                          child: SvgPicture.asset(AssetsData.notification),
                         ),
                         onPressed: () {},
                       ),
@@ -120,17 +115,14 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsetsDirectional.symmetric(
                       horizontal: 16.0.w, vertical: 10.0.h),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      hintStyle: safeGoogleFont(
-                        'Poppins',
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        height: 0,
-                      ),
-                      border: InputBorder.none,
+                  child: Text(
+                    'Search',
+                    style: safeGoogleFont(
+                      'Poppins',
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      height: 0,
                     ),
                   ),
                 ),
@@ -157,78 +149,19 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 28.w,
               ),
-              Stack(
-                children: [
-                  Container(
-                    width: 312.w,
-                    height: 181.h,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x3F000000),
-                          blurRadius: 13,
-                          offset: Offset(0, 4),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: SizedBox(
-                      width: 312.w,
-                      height: 181.h,
-                      child: Image.asset(
-                        "assets/Rectangle 27.png",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 165.w,
-                    height: 76.w,
-                    margin:
-                        EdgeInsetsDirectional.fromSTEB(22.w, 24.h, 125.w, 81.h),
-                    child: Text(
-                      'COMING \nBOOKS SOON',
-                      style: safeGoogleFont(
-                        color: Colors.white,
-                        fontSize: 25,
-                        'Poppins',
-                        fontWeight: FontWeight.w500,
-                        height: 0,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 81.w,
-                    height: 34.h,
-                    alignment: AlignmentDirectional.center,
-                    margin: EdgeInsetsDirectional.fromSTEB(
-                        203.w, 126.h, 28.w, 21.h),
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    child: Text(
-                      'Enroll',
-                      style: safeGoogleFont(
-                        color: Colors.black,
-                        fontSize: 18,
-                        'Poppins',
-                        fontWeight: FontWeight.w500,
-                        height: 0,
-                      ),
-                    ),
-                  ),
-                ],
+              SizedBox(
+                width: 312.w,
+                height: 181.h,
+                child: Image.asset(AssetsData.advertisement),
               ),
               SizedBox(
                 height: 34.h,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: 24.w,
+                  ),
                   Text(
                     'Popular Book',
                     style: safeGoogleFont(
@@ -253,7 +186,22 @@ class HomeScreen extends StatelessWidget {
                     ),
                   )
                 ],
-              )
+              ),
+              SizedBox(
+                height: 14.h,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 32.0.w,
+                  ),
+                  const BookListViewItem(),
+                ],
+              ),
+              SizedBox(
+                height: 32.0.w,
+              ),
             ],
           ),
         ),

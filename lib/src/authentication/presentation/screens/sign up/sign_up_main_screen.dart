@@ -22,6 +22,15 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
   int currentStep = 1;
   int stepLength = 3;
   late bool complete;
+  int selectedIndex = -1;
+  late String identification;
+
+  @override
+  void initState() {
+    super.initState();
+    identification = ""; // Initialize identification variable
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +55,33 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
               ),
               const SignUpText(),
               Container(
-                  child: currentStep == 1
-                      ? const SignUpStep1()
-                      : currentStep == 2
-                          ? const SignUpStep2()
-                          : const SignUpStep3()),
+                child: currentStep == 1
+                    ? SignUpStep1(
+                        selectedIndex: selectedIndex,
+                        onIdentitySelected: (index) {
+                          setState(() {
+                            selectedIndex = index;
+                            switch (selectedIndex) {
+                              case 0:
+                                identification = "AUTHOR";
+                                break;
+                              case 1:
+                                identification = "READER";
+                                break;
+                              case 2:
+                                identification = "PUBLISHER";
+                                break;
+                              default:
+                                identification = ""; // Reset identification
+                                break;
+                            }
+                          });
+                        },
+                      )
+                    : currentStep == 2
+                        ? const SignUpStep2()
+                        : const SignUpStep3(),
+              ),
               SizedBox(
                 width: 60.w,
               ),
@@ -60,30 +91,33 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                 child: Row(
                   children: [
                     Expanded(
-                        child: BackNextButtons(
-                            lable: 'رجوع',
-                            buttonColor: Colors.white,
-                            textColor: AppColors.primary,
-                            onTap: () {
-                              if (currentStep > 1) {
-                                goTo(currentStep - 1);
-                              } else if (currentStep == 1) {
-                                Navigator.pop(context);
-                              }
-                            })),
+                      child: BackNextButtons(
+                        lable: 'رجوع',
+                        buttonColor: Colors.white,
+                        textColor: AppColors.primary,
+                        onTap: () {
+                          if (currentStep > 1) {
+                            goTo(currentStep - 1);
+                          } else if (currentStep == 1) {
+                            Navigator.pop(context);
+                          }
+                        },
+                      ),
+                    ),
                     SizedBox(
                       width: 15.w,
                     ),
                     Expanded(
                       child: BackNextButtons(
-                          lable: 'التالي',
-                          textColor: Colors.white,
-                          buttonColor: AppColors.primary,
-                          onTap: () {
-                            if (currentStep <= stepLength) {
-                              goTo(currentStep + 1);
-                            }
-                          }),
+                        lable: 'التالي',
+                        textColor: Colors.white,
+                        buttonColor: AppColors.primary,
+                        onTap: () {
+                          if (validateStep()) {
+                            goTo(currentStep + 1);
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -95,7 +129,26 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
     );
   }
 
-  goTo(int step) {
+  bool validateStep() {
+    if (currentStep == 1 && selectedIndex == -1) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: AppColors.darkGray,
+          content: Text(
+            "يرجى اختيار الهوية الخاصة بك",
+            textAlign: TextAlign.end,
+            style: TextStyle(color: Colors.white),
+          ),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return false;
+    }
+    print(identification);
+    return true;
+  }
+
+  void goTo(int step) {
     setState(() => currentStep = step);
     if (currentStep > stepLength) {
       setState(() => complete = true);

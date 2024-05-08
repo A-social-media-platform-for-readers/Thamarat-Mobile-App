@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:untitled/src/authentication/presentation/widgets/sign up/identification_button.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../widgets/sign up/identification_button.dart';
 
-class SignUpStep1 extends StatefulWidget {
-  const SignUpStep1({Key? key}) : super(key: key);
+class SignUpStep1 extends StatelessWidget {
+  final int selectedIndex;
+  final Function(int) onIdentitySelected;
 
-  @override
-  _SignUpStep1State createState() => _SignUpStep1State();
-}
-
-class _SignUpStep1State extends State<SignUpStep1> {
-  int selectedIndex = -1;
+  const SignUpStep1({
+    Key? key,
+    required this.selectedIndex,
+    required this.onIdentitySelected,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +27,7 @@ class _SignUpStep1State extends State<SignUpStep1> {
           newColor: AppColors.primary,
           isSelected: selectedIndex == 0,
           onTap: () {
-            setState(() {
-              selectedIndex = selectedIndex == 0 ? -1 : 0;
-            });
+            onIdentitySelected(0);
           },
         ),
         SizedBox(
@@ -43,9 +40,7 @@ class _SignUpStep1State extends State<SignUpStep1> {
           newColor: AppColors.coral,
           isSelected: selectedIndex == 1,
           onTap: () {
-            setState(() {
-              selectedIndex = selectedIndex == 1 ? -1 : 1;
-            });
+            onIdentitySelected(1);
           },
         ),
         SizedBox(
@@ -58,9 +53,7 @@ class _SignUpStep1State extends State<SignUpStep1> {
           newColor: AppColors.cornflowerBlue,
           isSelected: selectedIndex == 2,
           onTap: () {
-            setState(() {
-              selectedIndex = selectedIndex == 2 ? -1 : 2;
-            });
+            onIdentitySelected(2);
           },
         ),
         SizedBox(

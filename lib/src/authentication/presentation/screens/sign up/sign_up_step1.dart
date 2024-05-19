@@ -27,7 +27,13 @@ class SignUpStep1 extends StatelessWidget {
           newColor: AppColors.primary,
           isSelected: selectedIndex == 0,
           onTap: () {
-            onIdentitySelected(0);
+            if (selectedIndex == 0) {
+              // If author button is already selected, reset it
+              onIdentitySelected(-1);
+            } else {
+              // Otherwise, select author and reset other selections
+              onIdentitySelected(0);
+            }
           },
         ),
         SizedBox(
@@ -40,7 +46,13 @@ class SignUpStep1 extends StatelessWidget {
           newColor: AppColors.coral,
           isSelected: selectedIndex == 1,
           onTap: () {
-            onIdentitySelected(1);
+            if (selectedIndex == 1) {
+              // If already selected, reset selectedIndex
+              onIdentitySelected(-1);
+            } else {
+              // Otherwise, select this identity
+              onIdentitySelected(1);
+            }
           },
         ),
         SizedBox(
@@ -53,7 +65,13 @@ class SignUpStep1 extends StatelessWidget {
           newColor: AppColors.cornflowerBlue,
           isSelected: selectedIndex == 2,
           onTap: () {
-            onIdentitySelected(2);
+            if (selectedIndex == 2) {
+              // If already selected, reset selectedIndex
+              onIdentitySelected(-1);
+            } else {
+              // Otherwise, select this identity
+              onIdentitySelected(2);
+            }
           },
         ),
         SizedBox(

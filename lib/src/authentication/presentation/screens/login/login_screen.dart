@@ -102,47 +102,37 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: SizedBox(
                                   width: 61.95.w,
                                   height: double.infinity.h,
-                                  child: MaterialButton(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Image.asset(
-                                          'assets/ri-checkbox-circle-line-bE4.png',
-                                          width: 21.95.w,
-                                          height: 21.95.h,
-                                        ),
-                                        SizedBox(
-                                          width: 5.w,
-                                        ),
-                                        SizedBox(
-                                          width: 35.w,
-                                          height: 22.h,
-                                          child: FittedBox(
-                                            fit: BoxFit.scaleDown,
-                                            child: Text(
-                                              'ذكرني',
-                                              style: safeGoogleFont(
-                                                'Cairo',
-                                                color: AppColors.facebookBlue,
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                height: 0,
-                                              ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/ri-checkbox-circle-line-bE4.png',
+                                        width: 21.95.w,
+                                        height: 21.95.h,
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      SizedBox(
+                                        width: 35.w,
+                                        height: 22.h,
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            'ذكرني',
+                                            style: safeGoogleFont(
+                                              'Cairo',
+                                              color: AppColors.facebookBlue,
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              height: 0,
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const ForgotPasswordScreen()),
-                                      );
-                                    },
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -152,22 +142,32 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               Expanded(
-                                child: SizedBox(
-                                  width: 106.w,
-                                  height: 18.h,
-                                  child: FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: Text(
-                                      'هل نسيت كلمة المرور ؟',
-                                      style: safeGoogleFont(
-                                        'Cairo',
-                                        color: AppColors.primary,
-                                        fontSize: 11.sp,
-                                        fontWeight: FontWeight.w500,
-                                        height: 0,
+                                child: MaterialButton(
+                                  child: SizedBox(
+                                    width: 106.w,
+                                    height: 18.h,
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text(
+                                        'هل نسيت كلمة المرور ؟',
+                                        style: safeGoogleFont(
+                                          'Cairo',
+                                          color: AppColors.primary,
+                                          fontSize: 11.sp,
+                                          fontWeight: FontWeight.w500,
+                                          height: 0,
+                                        ),
                                       ),
                                     ),
                                   ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ForgotPasswordScreen()),
+                                    );
+                                  },
                                 ),
                               ),
                             ],

@@ -77,38 +77,17 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
                 ),
                 validator: (value) {
                   if (widget.hintText == 'البريد الالكتروني') {
-                    if (!isEmail(value ?? "")) {
-                      bordercolor = Colors.red;
-                      showErrorMessage = true;
-                      errorMessage =
-                          'البريد الإلكتروني  غير صحيح، حاول مرة أخرى';
-                      return '';
-                    }
-                    return null;
+                    return _validateInput(value, 'email',
+                        'البريد الإلكتروني غير صحيح، حاول مرة أخرى');
                   } else if (widget.hintText == 'كلمة المرور') {
-                    if (value!.length < 6) {
-                      bordercolor = Colors.red;
-                      showErrorMessage = true;
-                      errorMessage = 'كلمة المرور قصيرة جدًا، حاول مرة أخرى';
-                      return '';
-                    }
-                    return null;
+                    return _validateInput(value, 'password',
+                        'كلمة المرور قصيرة جدًا، حاول مرة أخرى');
                   }
                   return null;
                 },
                 onChanged: (value) {
                   if (showErrorMessage) {
-                    if (widget.hintText == 'البريد الالكتروني') {
-                      if (isEmail(value)) {
-                        bordercolor = AppColors.darkGray;
-                        showErrorMessage = false;
-                      }
-                    } else if (widget.hintText == 'كلمة المرور') {
-                      if (value.length >= 6) {
-                        bordercolor = AppColors.darkGray;
-                        showErrorMessage = false;
-                      }
-                    }
+                    _resetErrorState(value, widget.hintText);
                   }
                 },
               ),
@@ -137,5 +116,26 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
         ],
       ),
     );
+  }
+
+  String? _validateInput(String? value, String inputType, String errorMessage) {
+    if (!formValidation(value ?? '', inputType)) {
+      _updateErrorState(errorMessage);
+      return '';
+    }
+    return null;
+  }
+
+  void _resetErrorState(String? value, String hintText) {
+    if (!formValidation(
+        value!, hintText == 'البريد الالكتروني' ? 'email' : 'password')) {
+      _updateErrorState('');
+    }
+  }
+
+  void _updateErrorState(String errorMessage) {
+    bordercolor = errorMessage.isNotEmpty ? Colors.red : AppColors.darkGray;
+    showErrorMessage = errorMessage.isNotEmpty;
+    this.errorMessage = errorMessage;
   }
 }

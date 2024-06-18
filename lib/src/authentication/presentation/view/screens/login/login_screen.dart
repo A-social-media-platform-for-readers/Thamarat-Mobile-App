@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/src/authentication/Data/auth_service.dart';
 import 'package:untitled/src/core/custom_bottomn_nav_bar.dart';
 import 'package:untitled/src/authentication/presentation/view/widgets/back_and_next_buttons.dart';
 import 'package:untitled/src/authentication/presentation/view/widgets/platform_button.dart';
@@ -23,6 +24,34 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isPasswordHidden = true;
+
+  final AuthService authService = AuthService();
+
+  void login() async {
+    try {
+      final response = await authService.login(
+        emailController.text,
+        passwordController.text,
+      );
+      print('Login successful: $response');
+      // Handle successful login
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const CustomBottomNavBar()),
+      );
+    } catch (e) {
+      print('Login failed: $e');
+      // Handle login error
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: AppColors.darkGray,
+        content: Text(
+          "Login failed. Please try again.",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white),
+        ),
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             decoration: const ShapeDecoration(
                               shape: RoundedRectangleBorder(
                                 side: BorderSide(
-                                  width: 1,
+                                  width: 0.7,
                                   strokeAlign: BorderSide.strokeAlignCenter,
                                   color: AppColors.darkGray,
                                 ),
@@ -86,8 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 : Icons.visibility,
                           ),
                           onPressed: () {
-                            isPasswordHidden = !isPasswordHidden;
-                            setState(() {});
+                            setState(() {
+                              isPasswordHidden = !isPasswordHidden;
+                            });
                           },
                         ),
                       ),
@@ -197,7 +227,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 lable: 'دخول',
                                 textColor: Colors.white,
                                 buttonColor: AppColors.primary,
-                                onTap: loginFormValidation,
+                                onTap: () {
+                                  if (loginFormValidation()) {
+                                    login();
+                                  }
+                                },
                               ),
                             ),
                           ],
@@ -279,9 +313,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void loginFormValidation() {
+  bool loginFormValidation() {
     if (formKey.currentState!.validate()) {
-      setState(() {});
       final scaffoldContext = ScaffoldMessenger.of(context);
       scaffoldContext.hideCurrentSnackBar();
       scaffoldContext.showSnackBar(
@@ -295,12 +328,8 @@ class _LoginScreenState extends State<LoginScreen> {
           duration: Duration(seconds: 5),
         ),
       );
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const CustomBottomNavBar()),
-      );
+      return true;
     } else {
-      setState(() {});
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         backgroundColor: AppColors.darkGray,
@@ -310,6 +339,7 @@ class _LoginScreenState extends State<LoginScreen> {
           style: TextStyle(color: Colors.white),
         ),
       ));
+      return false;
     }
   }
 }

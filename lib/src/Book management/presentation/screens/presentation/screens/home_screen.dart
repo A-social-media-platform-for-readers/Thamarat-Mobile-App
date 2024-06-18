@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:untitled/src/Book%20management/presentation/screens/presentation/widget/gene_/book_list_view_item.dart';
-import 'package:untitled/src/Book%20management/presentation/screens/presentation/widget/gene_/gene_container.dart';
-import 'package:untitled/src/core/utils/app_colors.dart';
 import 'package:untitled/src/core/utils/app_fonts.dart';
 import 'package:untitled/src/core/utils/assets.dart';
 
@@ -130,22 +128,6 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 17.w,
               ),
-              Container(
-                width: 281.16.w,
-                height: 29.h,
-                alignment: AlignmentDirectional.center,
-                child: const Row(
-                  children: [
-                    GeneContainer(
-                        label: 'Sciences', containerColor: AppColors.peachPuff),
-                    GeneContainer(
-                        label: 'stories', containerColor: AppColors.primary),
-                    GeneContainer(
-                        label: 'Novels',
-                        containerColor: AppColors.lightBlueishTeal),
-                  ],
-                ),
-              ),
               SizedBox(
                 height: 28.w,
               ),
@@ -190,22 +172,42 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 14.h,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: 32.0.w,
-                  ),
-                  const BookListViewItem(),
-                ],
+              SizedBox(
+                width: double.infinity,
+                height: 246.h,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 32.0.w,
+                    ),
+                    const Expanded(child: BookListView())
+                  ],
+                ),
               ),
               SizedBox(
-                height: 32.0.w,
+                height: 132.0.w,
               ),
             ],
           ),
         ),
       ),
     ));
+  }
+}
+
+class BookListView extends StatelessWidget {
+  const BookListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 246.h,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return const BookListViewItem();
+          }),
+    );
   }
 }

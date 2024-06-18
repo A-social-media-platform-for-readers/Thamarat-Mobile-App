@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:untitled/src/Book%20management/presentation/screens/presentation/screens/downloads_screen.dart';
+import 'package:untitled/src/downloads_screen.dart';
 import 'package:untitled/src/Book%20management/presentation/screens/presentation/screens/home_screen.dart';
-import 'package:untitled/src/Book%20management/presentation/screens/presentation/screens/profile_screen.dart';
-import 'package:untitled/src/Book%20management/presentation/screens/presentation/screens/social_media_screen.dart';
+import 'package:untitled/src/profile_screen.dart';
+import 'package:untitled/src/social%20media/view/screen/social_media_screen.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
 import 'package:untitled/src/core/utils/assets.dart';
 

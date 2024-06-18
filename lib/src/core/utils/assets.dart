@@ -1,4 +1,7 @@
 class AssetsData {
+  // sign up Screen
+  static const typeIcon = "assets/icons-d1W.png";
+
   // BottomNavBar Icons
   static const homeIcon = "assets/home.svg";
   static const socialMediaIcon = "assets/Chat_Conversation_Circle.svg";

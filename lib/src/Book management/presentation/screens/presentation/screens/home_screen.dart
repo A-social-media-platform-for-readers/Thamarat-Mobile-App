@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:untitled/src/Book%20management/presentation/screens/presentation/widget/gene_/Book_list_view_header.dart';
 import 'package:untitled/src/Book%20management/presentation/screens/presentation/widget/gene_/book_list_view_item.dart';
 import 'package:untitled/src/core/utils/app_fonts.dart';
 import 'package:untitled/src/core/utils/assets.dart';
@@ -11,9 +12,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: SingleChildScrollView(
-        child: Center(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 13.w,
+                    width: 13,
                   ),
                   Expanded(
                     child: SizedBox(
@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 144.w,
+                    width: 144,
                   ),
                   Expanded(
                     flex: 1,
@@ -139,60 +139,19 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 34.h,
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 24.w,
-                  ),
-                  Text(
-                    'Popular Book',
-                    style: safeGoogleFont(
-                      color: Colors.black,
-                      fontSize: 18,
-                      'Poppins',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 147.w,
-                  ),
-                  Text(
-                    'see All',
-                    style: safeGoogleFont(
-                      color: Colors.black,
-                      fontSize: 12,
-                      'Poppins',
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.underline,
-                      height: 0,
-                    ),
-                  )
-                ],
+              const BookListViewHeader(
+                headerTitle: 'الكتب الأكثر انتشاراً',
               ),
-              SizedBox(
-                height: 14.h,
+              const BookListView(),
+              const BookListViewHeader(
+                headerTitle: "الكتب المجانية",
               ),
-              SizedBox(
-                width: double.infinity,
-                height: 246.h,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 32.0.w,
-                    ),
-                    const Expanded(child: BookListView())
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 132.0.w,
-              ),
+              const BookListView(),
             ],
           ),
         ),
       ),
-    ));
+    );
   }
 }
 
@@ -201,12 +160,17 @@ class BookListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 246.h,
+      margin: EdgeInsetsDirectional.fromSTEB(34.w, 0, 0, 24.h),
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return const BookListViewItem();
+            return Container(
+                width: 141.w,
+                height: 246.h,
+                padding: EdgeInsetsDirectional.only(end: 11.w),
+                child: const BookListViewItem());
           }),
     );
   }

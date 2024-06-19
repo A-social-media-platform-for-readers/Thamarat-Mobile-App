@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/authentication/Data/auth_service.dart';
-import 'package:untitled/src/core/custom_bottomn_nav_bar.dart';
-import 'package:untitled/src/authentication/presentation/view/widgets/back_and_next_buttons.dart';
-import 'package:untitled/src/authentication/presentation/view/widgets/platform_button.dart';
-import 'package:untitled/src/authentication/presentation/view/widgets/welcome_text.dart';
 import 'package:untitled/src/authentication/presentation/view/screens/forgot%20password/forgot_password_screen.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
-import '../../widgets/welcome/app_title.dart';
+import 'package:untitled/src/authentication/presentation/view/widgets/welcome/app_title.dart';
+import 'package:untitled/src/authentication/presentation/view/widgets/welcome_text.dart';
+import 'package:untitled/src/core/custom_bottomn_nav_bar.dart';
+import 'package:untitled/src/core/utils/app_colors.dart';
+import 'package:untitled/src/core/utils/app_fonts.dart';
 import '../../widgets/create_an_account_widget.dart';
 import '../../widgets/login_text_field.dart';
+import '../../widgets/back_and_next_buttons.dart';
+import '../../widgets/platform_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,34 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isPasswordHidden = true;
-
-  final AuthService authService = AuthService();
-
-  void login() async {
-    try {
-      final response = await authService.login(
-        emailController.text,
-        passwordController.text,
-      );
-      print('Login successful: $response');
-      // Handle successful login
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const CustomBottomNavBar()),
-      );
-    } catch (e) {
-      print('Login failed: $e');
-      // Handle login error
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        backgroundColor: AppColors.darkGray,
-        content: Text(
-          "Login failed. Please try again.",
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white),
-        ),
-      ));
-    }
-  }
+  final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -211,25 +184,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           children: [
                             Expanded(
-                                child: BackNextButtons(
-                              lable: 'رجوع',
-                              buttonColor: Colors.white,
-                              textColor: AppColors.primary,
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                            )),
+                              child: BackNextButtons(
+                                label: 'رجوع',
+                                buttonColor: Colors.white,
+                                textColor: AppColors.primary,
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ),
                             SizedBox(
                               width: 15.w,
                             ),
                             Expanded(
                               child: BackNextButtons(
-                                lable: 'دخول',
+                                label: 'دخول',
                                 textColor: Colors.white,
                                 buttonColor: AppColors.primary,
                                 onTap: () {
                                   if (loginFormValidation()) {
-                                    login();
+                                    loginUser(context);
                                   }
                                 },
                               ),
@@ -340,6 +314,33 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ));
       return false;
+    }
+  }
+
+  void loginUser(BuildContext context) async {
+    final String email = emailController.text.trim();
+    final String password = passwordController.text.trim();
+
+    bool success = await _authService.loginUser(email, password);
+
+    if (success) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                const CustomBottomNavBar()), // Replace with your next screen
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: AppColors.darkGray,
+          content: Text(
+            "فشل تسجيل الدخول. يرجى المحاولة مرة أخرى",
+            textAlign: TextAlign.end,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      );
     }
   }
 }

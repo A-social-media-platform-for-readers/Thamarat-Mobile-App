@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_fonts.dart';
 
 class BackNextButtons extends StatelessWidget {
-  final String lable;
+  final String label;
   final Color textColor;
   final Color buttonColor;
   final void Function()? onTap;
 
   const BackNextButtons({
     super.key,
-    required this.lable,
+    required this.label,
     required this.textColor,
     required this.buttonColor,
     required this.onTap,
@@ -45,7 +45,7 @@ class BackNextButtons extends StatelessWidget {
             child: FittedBox(
               fit: BoxFit.scaleDown,
               child: Text(
-                lable,
+                label,
                 textAlign: TextAlign.center,
                 style: safeGoogleFont(
                   'Cairo',

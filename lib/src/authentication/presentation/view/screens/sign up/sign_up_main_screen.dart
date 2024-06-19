@@ -1,14 +1,14 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/authentication/Data/auth_service.dart';
+import 'package:untitled/src/authentication/Data/user_mode.dart';
+import 'package:untitled/src/core/custom_bottomn_nav_bar.dart';
+import 'package:untitled/src/core/utils/app_colors.dart';
 import 'package:untitled/src/authentication/presentation/view/widgets/sign%20up/sign_up_stepper.dart';
 import 'package:untitled/src/authentication/presentation/view/widgets/sign%20up/sign_up_text.dart';
 import 'package:untitled/src/authentication/presentation/view/screens/sign%20up/sign_up_step1.dart';
 import 'package:untitled/src/authentication/presentation/view/screens/sign%20up/sign_up_step2.dart';
 import 'package:untitled/src/authentication/presentation/view/screens/sign%20up/sign_up_step3.dart';
-import 'package:untitled/src/core/custom_bottomn_nav_bar.dart';
-import 'package:untitled/src/core/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/back_and_next_buttons.dart';
 import '../../widgets/welcome_text.dart';
 
@@ -38,52 +38,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
   final TextEditingController _birthdayController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
 
-  final AuthService authService = AuthService();
-
-  void _register() async {
-    try {
-      final userData = {
-        'identity': identification,
-        'name': _userNameController.text,
-        'email': _emailController.text,
-        'password': _passwordController.text,
-      };
-
-      final user = await authService.register(userData);
-      print('Registration successful: ${user.name}');
-      // Handle successful registration
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const CustomBottomNavBar()),
-      );
-    } catch (e) {
-      if (e is DioError) {
-        // DioError is thrown by Dio package when there is an issue with the request
-        final response = e.response;
-        if (response != null) {
-          print(
-              'Registration failed: ${response.statusCode} ${response.statusMessage}');
-          print('Response data: ${response.data}');
-        } else {
-          print('Registration failed: $e');
-        }
-      } else {
-        print('Registration failed: $e');
-      }
-
-      // Show an error message to the user
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          backgroundColor: AppColors.darkGray,
-          content: Text(
-            "Registration failed. Please try again.",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-      );
-    }
-  }
+  final AuthService _authService = AuthService();
 
   @override
   void initState() {
@@ -102,6 +57,33 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
     super.dispose();
   }
 
+  void registerUser(BuildContext context) async {
+    final user = User(
+      identity: identification,
+      name: _userNameController.text,
+      email: _emailController.text,
+      password: _passwordController.text,
+      birthDate:
+          _birthdayController.text.isNotEmpty ? _birthdayController.text : null,
+      gender: _genderController.text.isNotEmpty ? _genderController.text : null,
+    );
+
+    bool success = await _authService.registerUser(user);
+
+    if (success) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const CustomBottomNavBar()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Failed to register user'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,20 +93,11 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
           child: Center(
             child: Column(
               children: [
-                SizedBox(
-                  height: 54.h,
-                ),
+                SizedBox(height: 54.h),
                 const WelcomeText(),
-                SizedBox(
-                  height: 18.h,
-                ),
-                SignUpStepper(
-                  totalSteps: stepLength,
-                  curStep: currentStep,
-                ),
-                SizedBox(
-                  height: 28.h,
-                ),
+                SizedBox(height: 18.h),
+                SignUpStepper(totalSteps: stepLength, curStep: currentStep),
+                SizedBox(height: 28.h),
                 const SignUpText(),
                 Container(
                   child: currentStep == 1
@@ -164,9 +137,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                             )
                           : const SignUpStep3(),
                 ),
-                SizedBox(
-                  width: 60.w,
-                ),
+                SizedBox(width: 60.w),
                 SizedBox(
                   width: 295.w,
                   height: 56.h,
@@ -174,7 +145,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                     children: [
                       Expanded(
                         child: BackNextButtons(
-                          lable: 'رجوع',
+                          label: 'رجوع',
                           buttonColor: Colors.white,
                           textColor: AppColors.primary,
                           onTap: () {
@@ -186,12 +157,10 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                           },
                         ),
                       ),
-                      SizedBox(
-                        width: 15.w,
-                      ),
+                      SizedBox(width: 15.w),
                       Expanded(
                         child: BackNextButtons(
-                          lable: currentStep == stepLength ? 'تسجيل' : 'التالي',
+                          label: currentStep == stepLength ? 'تسجيل' : 'التالي',
                           textColor: Colors.white,
                           buttonColor: AppColors.primary,
                           onTap: () {
@@ -200,7 +169,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                                 step2Key.currentState!
                                     .signUpFormValidation(context);
                               } else if (currentStep == stepLength) {
-                                _register();
+                                registerUser(context);
                               } else {
                                 goTo(currentStep + 1);
                               }
@@ -211,9 +180,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  width: 44.w,
-                ),
+                SizedBox(width: 44.w),
               ],
             ),
           ),

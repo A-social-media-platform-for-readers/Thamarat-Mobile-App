@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/authentication/presentation/view/widgets/welcome_text.dart';
 import 'package:untitled/src/authentication/presentation/view/screens/login/login_screen.dart';
 import 'package:untitled/src/authentication/presentation/view/screens/sign%20up/sign_up_main_screen.dart';
+import 'package:untitled/src/core/utils/assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../widgets/welcome/welcome_screen_button.dart';
 import '../../widgets/welcome/app_title.dart';
@@ -34,7 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     height: 15.59.h,
                   ),
                   Image.asset(
-                    'assets/reading-list-bro-1.png',
+                    AssetsData.welcomeImage,
                     width: 360.w,
                     height: 338.54.h,
                   ),

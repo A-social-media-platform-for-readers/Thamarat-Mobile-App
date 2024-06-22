@@ -7,6 +7,7 @@ import 'package:untitled/src/authentication/presentation/view/widgets/welcome_te
 import 'package:untitled/src/core/custom_bottomn_nav_bar.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
 import 'package:untitled/src/core/utils/app_fonts.dart';
+import 'package:untitled/src/core/utils/assets.dart';
 import '../../widgets/create_an_account_widget.dart';
 import '../../widgets/login_text_field.dart';
 import '../../widgets/back_and_next_buttons.dart';
@@ -111,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Image.asset(
-                                        'assets/ri-checkbox-circle-line-bE4.png',
+                                        AssetsData.rembemberIcon,
                                         width: 21.95.w,
                                         height: 21.95.h,
                                       ),
@@ -260,20 +261,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 PlatformButton(
                   lable: 'Google',
-                  icon: 'assets/group-272.png',
+                  icon: AssetsData.googleIcon,
                   buttonColor: Colors.white,
                   textColor: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {}, label: '',
                 ),
                 SizedBox(
                   height: 11.h,
                 ),
                 PlatformButton(
                   lable: 'Facebook',
-                  icon: 'assets/vector.png',
+                  icon: AssetsData.facebackIcon,
                   buttonColor: AppColors.facebookBlue,
                   textColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () {}, label: '',
                 ),
                 SizedBox(
                   height: 36.h,

@@ -122,12 +122,12 @@ class _LoginTextFieldState extends State<LoginTextField> {
                     if (showErrorMessage) {
                       if (widget.lable == 'البريد الالكتروني') {
                         if (isEmail(value)) {
-                          bordercolor = AppColors.darkGray;
+                          bordercolor = AppColors.primary;
                           showErrorMessage = false;
                         }
                       } else if (widget.lable == 'كلمة المرور') {
                         if (value.length >= 6) {
-                          bordercolor = AppColors.darkGray;
+                          bordercolor = AppColors.primary;
                           showErrorMessage = false;
                         }
                       }

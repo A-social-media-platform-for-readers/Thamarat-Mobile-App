@@ -15,7 +15,7 @@ class PlatformButton extends StatelessWidget {
       required this.icon,
       required this.buttonColor,
       required this.textColor,
-      required this.onPressed});
+      required this.onPressed, required String label});
 
   @override
   Widget build(BuildContext context) {

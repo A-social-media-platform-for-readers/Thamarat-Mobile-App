@@ -1,16 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled/src/authentication/Data/user_mode.dart';
+import 'package:untitled/src/core/api_constants.dart';
 
 class AuthService {
   final Dio _dio = Dio();
 
   Future<bool> registerUser(User user) async {
-    const String url = 'https://backend-9s26.onrender.com/auth/register/';
-
     try {
       final response = await _dio.post(
-        url,
+        ApiConstants.register,
         data: user.toJson(),
         options: Options(headers: {
           'Content-Type': 'application/json',
@@ -24,15 +23,6 @@ class AuthService {
         print('Failed to register user: ${response.statusMessage}');
         return false;
       }
-    } on DioException catch (e) {
-      if (e.response != null) {
-        print('DioException: ${e.response?.data}');
-        print('DioException: ${e.response?.headers}');
-        print('DioException: ${e.response?.requestOptions}');
-      } else {
-        print('DioException: ${e.message}');
-      }
-      return false;
     } catch (e) {
       print('Error occurred while registering user: $e');
       return false;
@@ -40,11 +30,9 @@ class AuthService {
   }
 
   Future<bool> loginUser(String email, String password) async {
-    const String url = 'https://backend-9s26.onrender.com/auth/login/';
-
     try {
       final response = await _dio.post(
-        url,
+        ApiConstants.login,
         data: {
           'email': email,
           'password': password,
@@ -63,18 +51,14 @@ class AuthService {
         print('Failed to login: ${response.statusMessage}');
         return false;
       }
-    } on DioException catch (e) {
-      if (e.response != null) {
-        print('DioException: ${e.response?.data}');
-        print('DioException: ${e.response?.headers}');
-        print('DioException: ${e.response?.requestOptions}');
-      } else {
-        print('DioException: ${e.message}');
-      }
-      return false;
     } catch (e) {
       print('Error occurred while logging in: $e');
       return false;
     }
+  }
+
+  Future<bool> isLoggedIn() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.containsKey('jwt');
   }
 }

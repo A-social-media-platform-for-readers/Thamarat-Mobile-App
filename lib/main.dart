@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:untitled/src/authentication/presentation/view/screens/welcome/welcome_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return GetMaterialApp(
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'ثمرات Thamarat',
           theme: ThemeData(
@@ -29,4 +30,4 @@ class MyApp extends StatelessWidget {
       child: const WelcomeScreen(),
     );
   }
-} 
+}

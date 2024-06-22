@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/authentication/presentation/view/widgets/border.dart';
-import 'package:untitled/src/core/const.dart';
+import 'package:untitled/src/core/utils/const.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../utils/email_validation_method.dart';

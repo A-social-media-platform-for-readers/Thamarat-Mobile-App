@@ -106,9 +106,6 @@ class SignUpStep2State extends State<SignUpStep2> {
             controller: widget.genderController,
           ),
           SizedBox(
-            height: 15.02.h,
-          ),
-          SizedBox(
             height: 45.02.h,
           ),
         ],

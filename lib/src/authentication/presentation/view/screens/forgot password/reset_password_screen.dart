@@ -7,7 +7,7 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../widgets/create_an_account_widget.dart';
 import '../../widgets/forgot password/forgot_password_appbar.dart';
-import '../../../../../Book management/presentation/screens/presentation/screens/home_screen.dart';
+import '../../../../../Book management/presentation/view/screens/home_screen.dart';
 
 class ResetPsswordScreen extends StatefulWidget {
   const ResetPsswordScreen({super.key});

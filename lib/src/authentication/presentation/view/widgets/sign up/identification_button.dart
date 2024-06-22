@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
+import 'package:untitled/src/core/utils/assets.dart';
 import '../../../../../core/utils/app_fonts.dart';
 
 class IdentificationButton extends StatelessWidget {
-  final String startIdentityIcon;
   final String identityName;
-  final String endIdentityIcon;
+  final String notselectedIdentityIcon;
+  final String selectedIdentityIcon;
   final Color newColor;
   final bool isSelected;
   final VoidCallback onTap;
 
   const IdentificationButton({
     Key? key,
-    required this.startIdentityIcon,
-    required this.endIdentityIcon,
-    required this.newColor,
     required this.identityName,
+    required this.notselectedIdentityIcon,
+    required this.selectedIdentityIcon,
+    required this.newColor,
     required this.isSelected,
     required this.onTap,
   }) : super(key: key);
@@ -30,7 +31,7 @@ class IdentificationButton extends StatelessWidget {
         width: isSelected ? 268.w : 160.w,
         height: 47.h,
         decoration: BoxDecoration(
-          color: isSelected ? newColor : AppColors.lightGray,
+          color: isSelected ? newColor : AppColors.softGray,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -40,7 +41,7 @@ class IdentificationButton extends StatelessWidget {
               width: 18,
               height: 15,
               child: Image.asset(
-                isSelected ? endIdentityIcon : startIdentityIcon,
+                isSelected ? selectedIdentityIcon : notselectedIdentityIcon,
               ),
             ),
             Container(
@@ -65,7 +66,7 @@ class IdentificationButton extends StatelessWidget {
               width: 24.w,
               height: 24.h,
               child: Image.asset(
-                isSelected ? "assets/Icons (1).png" : "assets/Icons (2).png",
+                isSelected ? AssetsData.selected : AssetsData.notSelected,
               ),
             ),
           ],

@@ -21,7 +21,7 @@ class _BirthdayTextFieldState extends State<BirthdayTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: signUpFeildWidth.w,
+      width: 307.w,
       height: signUpFeildHeight.h,
       child: Stack(
         alignment: Alignment.centerRight,
@@ -44,7 +44,7 @@ class _BirthdayTextFieldState extends State<BirthdayTextField> {
             left: 0.w,
             top: 0.h,
             child: SizedBox(
-              width: 287.w,
+              width: 297.w,
               height: signUpFeildHeight.h,
               child: TextFormField(
                 textAlign: TextAlign.end,

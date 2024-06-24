@@ -63,9 +63,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
       name: _userNameController.text,
       email: _emailController.text,
       password: _passwordController.text,
-      birthDate:
-          _birthdayController.text.isNotEmpty ? _birthdayController.text : null,
-      gender: _genderController.text.isNotEmpty ? _genderController.text : null,
+      
     );
 
     bool success = await _authService.registerUser(user);

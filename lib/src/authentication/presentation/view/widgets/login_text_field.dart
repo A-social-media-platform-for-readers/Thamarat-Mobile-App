@@ -104,6 +104,8 @@ class _LoginTextFieldState extends State<LoginTextField> {
                         showErrorMessage = true;
                         errorMessage =
                             'البريد الإلكتروني  غير صحيح، حاول مرة أخرى';
+                        setState(() {});
+
                         return '';
                       }
                       return null;
@@ -112,6 +114,8 @@ class _LoginTextFieldState extends State<LoginTextField> {
                         bordercolor = Colors.red;
                         showErrorMessage = true;
                         errorMessage = 'كلمة المرور قصيرة جدًا، حاول مرة أخرى';
+                        setState(() {});
+
                         return '';
                       }
                       return null;

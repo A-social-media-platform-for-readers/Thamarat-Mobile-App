@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/Book%20management/Data/book_model.dart';
 import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20details%20widgets/Publishing_data.dart';
 import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20details%20widgets/book_card.dart';
-import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20details%20widgets/book_comment_list_view_item.dart';
+import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20details%20widgets/book_comment_list_view.dart';
 import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20details%20widgets/book_commentfeild.dart';
 import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20details%20widgets/book_data_diplay.dart';
 import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20details%20widgets/book_description.dart';
@@ -70,7 +70,7 @@ class BookDetailsScreen extends StatelessWidget {
                 height: 10.h,
               ),
               AnimatedRatingStars(
-                initialRating: 3.5,
+                initialRating: book.rate ?? 3.5,
                 minRating: 0.0,
                 maxRating: 5.0,
                 filledColor: Colors.amber,
@@ -116,7 +116,7 @@ class BookDetailsScreen extends StatelessWidget {
               SizedBox(
                 height: 34.h,
               ),
-              const BookCommentListViewItem(),
+              const BookCommentListView(),
               SizedBox(
                 height: 34.h,
               ),

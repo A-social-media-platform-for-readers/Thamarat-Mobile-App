@@ -45,52 +45,6 @@ class BookListViewItem extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 6.w,
-            top: 6.h,
-            child: SizedBox(
-              width: 61.w,
-              height: 25.h,
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    child: Container(
-                      width: 61.w,
-                      height: 25.h,
-                      decoration: ShapeDecoration(
-                        color: AppColors.primary,
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 2, color: Colors.white),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 18.w,
-                    top: 3.h,
-                    child: SizedBox(
-                      width: 26.w,
-                      height: 14.52.h,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        'Free',
-                        style: safeGoogleFont(
-                          'Poppins',
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
             left: 0.w,
             top: 207.h,
             child: SizedBox(

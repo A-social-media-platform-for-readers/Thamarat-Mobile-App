@@ -128,7 +128,6 @@ class BookCommentListViewItem extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                                 height: 0.07,
                               ),
-                              
                             ),
                           ),
                         ),

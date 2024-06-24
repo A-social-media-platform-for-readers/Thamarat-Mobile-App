@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                       height: 39.h,
                       margin: EdgeInsetsDirectional.only(end: 36.0.w),
                       decoration: ShapeDecoration(
-                        color: Colors.white,
+                        color: AppColors.primary,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
                         shadows: const [
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                         icon: SizedBox(
                           width: 24.w,
                           height: 24.h,
-                          child: SvgPicture.asset(AssetsData.notification),
+                          child: Image.asset('assets/Media.png'),
                         ),
                         onPressed: () {},
                       ),
@@ -139,7 +139,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: 312.w,
                 height: 181.h,
-                child: Image.asset(AssetsData.advertisement),
+                child: Image.asset('assets/Group_12785.png'),
               ),
               SizedBox(
                 height: 34.h,
@@ -168,7 +168,6 @@ class HomeScreen extends StatelessWidget {
               BookListView(
                 fetchBooksCallback: bookService.fetchFreeBooks,
               ),
-              const FollowListView(),
               SizedBox(
                 height: 49.h,
               ),

@@ -45,6 +45,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   readmore: ^3.0.0
   animated_rating_stars: ^1.0.1
+  faker: ^2.1.0
 
 flutter_launcher_icons:
   android: "launcher_icon"

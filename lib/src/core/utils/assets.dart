@@ -41,4 +41,5 @@ class AssetsData {
   static const religiouIcon = "assets/image 11.png";
   static const bookSummaryIcon = "assets/paperclip.png";
   static const bookCommment = "assets/upload.png";
+
 }

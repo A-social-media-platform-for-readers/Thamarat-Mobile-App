@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:faker/faker.dart';
+import 'package:untitled/src/core/utils/app_fonts.dart';
+import 'package:untitled/src/social%20media/view/screen/ChatList.dart';
+
+// Fake data generation
+final faker = Faker();
 
 class SocialMediaScreen extends StatelessWidget {
-  const SocialMediaScreen({super.key});
+  const SocialMediaScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<Post> fakePosts = List.generate(25, (index) => generateFakePost());
+
     return DefaultTabController(
-      length: 2, // Number of tabs
+      length: 2, // Number of tabs including the chat tab
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -26,7 +34,6 @@ class SocialMediaScreen extends StatelessWidget {
               Spacer(),
               Icon(Icons.search, color: Colors.black),
               SizedBox(width: 20),
-              Icon(Icons.notifications, color: Colors.black),
               SizedBox(width: 20),
               CircleAvatar(
                 radius: 19.5,
@@ -45,30 +52,35 @@ class SocialMediaScreen extends StatelessWidget {
                 ),
                 const TabBar(
                   isScrollable: true,
+                  tabAlignment: TabAlignment.center,
                   tabs: [
                     Tab(icon: Icon(Icons.home, color: Colors.blue)),
-                    Tab(icon: Icon(Icons.search, color: Colors.grey)),
+                    Tab(icon: Icon(Icons.chat, color: Colors.grey)),
                   ],
                 ),
               ],
             ),
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        body: TabBarView(
           children: [
-            const SizedBox(height: 20),
-            const Row(
+            // Screen 1: Home Screen
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                StoryItem(name: "You", imagePath: "assets/aatar.svg"),
-                StoryItem(name: "Ahmed", imagePath: "assets/aatar-2.svg"),
-                StoryItem(name: "mohamed", imagePath: "assets/aatar-3.svg"),
-                StoryItem(name: "Mostafa", imagePath: "assets/aatar-4.svg"),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: fakePosts.length,
+                    itemBuilder: (context, index) {
+                      return PostCard(post: fakePosts[index]);
+                    },
+                  ),
+                ),
               ],
             ),
-            const SizedBox(height: 20),
-            PostCard(),
-            PostCard(),
+            // Screen 2: Chat Screen
+            ChatList(),
           ],
         ),
       ),
@@ -76,33 +88,31 @@ class SocialMediaScreen extends StatelessWidget {
   }
 }
 
-class StoryItem extends StatelessWidget {
-  final String name;
-  final String imagePath;
-
-  const StoryItem({super.key, required this.name, required this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 35,
-            backgroundImage: AssetImage(imagePath),
-          ),
-          Text(name,
-              style: TextStyle(
-                  color: Colors.black, fontSize: 13, fontFamily: 'Poppins'))
-        ],
-      ),
-    );
-  }
+Post generateFakePost() {
+  return Post(
+    id: faker.randomGenerator.integer(1000),
+    content: faker.lorem.sentences(5).join(' '),
+    image: null,
+    video: null,
+    createTime: faker.date.dateTime(),
+    likeCount: faker.randomGenerator.integer(100),
+    youLiked: faker.randomGenerator.boolean(),
+    commentCount: faker.randomGenerator.integer(50),
+    user: User(
+      id: faker.randomGenerator.integer(1000),
+      identity: faker.guid.guid(),
+      name: faker.person.name(),
+      email: faker.internet.email(),
+      profileImage: faker.image.image(),
+      bio: faker.lorem.sentence(),
+    ),
+  );
 }
 
 class PostCard extends StatelessWidget {
-  PostCard();
+  final Post post;
+
+  PostCard({required this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -121,75 +131,114 @@ class PostCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 15,
-                    backgroundImage: AssetImage("assets/man.png"),
+                    backgroundImage: NetworkImage(post.user.profileImage ??
+                        'https://via.placeholder.com/150'),
                   ),
                   SizedBox(width: 10),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('mohamed Elwaly',
-                          style: TextStyle(
+                      Text(post.user.name,
+                          style: safeGoogleFont(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins')),
-                      Text('Reader and Author',
+                              'Poppins')),
+                      Text(post.user.bio ?? '',
                           style: TextStyle(
                               fontSize: 8,
                               color: Colors.grey,
                               fontFamily: 'Poppins')),
                     ],
                   ),
-                  const Spacer(),
+                  Spacer(),
                   SizedBox(
                     height: 19,
                     child: MaterialButton(
                       color: Colors.blue,
                       onPressed: () {},
-                      child: const Text('Follow',
-                          style: TextStyle(
+                      child: Text('Follow',
+                          style: safeGoogleFont(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
-                              fontFamily: 'Poppins',
+                              'Poppins',
                               color: Colors.white)),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-              const Text(
-                  'تعتبر القراءة من أهمّ المهارات المكتسبة التي تحقق النجاح والمتعة لكل فرد خلال حياته، وذلك انطلاقاً من...'
-                  ' أن القراءة هي الجزء المكمل للحياة الشخصية والعملية وهي مفتاح أبواب العلوم والمعارف المتنوعة. مهارة '
-                  'القراءة لا يكفي بذكاء الطالب، بل يهتمّ بوجود العوامل الخارجية والداخلية المشجّعة على القراءة.',
-                  maxLines: 4,
-                  style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Cairo')),
-              const SizedBox(height: 10),
-              Image.asset("assets/post-image.png"),
-              const SizedBox(height: 10),
-              const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text('50 Like',
-                    style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Inter')),
-                Row(
-                  children: [
-                    Icon(Icons.comment, size: 24, color: Colors.grey),
-                    SizedBox(width: 5),
-                    Text('10 Comment',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Inter')),
-                  ],
-                )
-              ])
+              SizedBox(height: 10),
+              Text(
+                post.content,
+                maxLines: 4,
+                style: safeGoogleFont(
+                    fontSize: 10, fontWeight: FontWeight.w600, 'Cairo'),
+              ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('${post.likeCount} Like',
+                      style: safeGoogleFont(
+                          fontSize: 11, fontWeight: FontWeight.w400, 'Inter')),
+                  Row(
+                    children: [
+                      Icon(Icons.comment, size: 24, color: Colors.grey),
+                      SizedBox(width: 5),
+                      Text('${post.commentCount} Comment',
+                          style: safeGoogleFont(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w400,
+                              'Inter')),
+                    ],
+                  )
+                ],
+              )
             ],
           ),
         ),
       ),
     );
   }
+}
+
+class Post {
+  final int id;
+  final String content;
+  final String? image;
+  final String? video;
+  final DateTime createTime;
+  final int likeCount;
+  final bool youLiked;
+  final int commentCount;
+  final User user;
+
+  Post({
+    required this.id,
+    required this.content,
+    this.image,
+    this.video,
+    required this.createTime,
+    required this.likeCount,
+    required this.youLiked,
+    required this.commentCount,
+    required this.user,
+  });
+}
+
+class User {
+  final int id;
+  final String identity;
+  final String name;
+  final String email;
+  final String? profileImage;
+  final String? bio;
+
+  User({
+    required this.id,
+    required this.identity,
+    required this.name,
+    required this.email,
+    this.profileImage,
+    this.bio,
+  });
 }

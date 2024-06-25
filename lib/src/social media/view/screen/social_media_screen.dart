@@ -1,18 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:faker/faker.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:untitled/src/core/utils/app_colors.dart';
 import 'package:untitled/src/core/utils/app_fonts.dart';
+import 'package:untitled/src/core/utils/assets.dart';
+import 'package:untitled/src/social%20media/Data/post_service.dart';
 import 'package:untitled/src/social%20media/view/screen/ChatList.dart';
+import 'package:untitled/src/social%20media/Data/post_model.dart';
 
-// Fake data generation
-final faker = Faker();
-
-class SocialMediaScreen extends StatelessWidget {
+class SocialMediaScreen extends StatefulWidget {
   const SocialMediaScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    List<Post> fakePosts = List.generate(25, (index) => generateFakePost());
+  _SocialMediaScreenState createState() => _SocialMediaScreenState();
+}
 
+class _SocialMediaScreenState extends State<SocialMediaScreen> {
+  final PostService _postService = PostService();
+  List<Post> posts = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchPosts();
+  }
+
+  Future<void> _fetchPosts() async {
+    final fetchedPosts = await _postService.fetchPosts(1);
+    setState(() {
+      posts = fetchedPosts;
+      isLoading = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2, // Number of tabs including the chat tab
       child: Scaffold(
@@ -21,25 +44,75 @@ class SocialMediaScreen extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
-          title: const Row(
+          title: Row(
             children: [
-              Icon(Icons.menu, color: Colors.black),
-              SizedBox(width: 20),
-              Text('thamarat',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins')),
-              Spacer(),
-              Icon(Icons.search, color: Colors.black),
-              SizedBox(width: 20),
-              SizedBox(width: 20),
-              CircleAvatar(
-                radius: 19.5,
-                backgroundColor: Colors.white,
-                child: Icon(Icons.person, size: 30, color: Colors.black),
-              )
+              SizedBox(
+                width: 31.w,
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: SizedBox(
+                    width: 24.w,
+                    height: 24.h,
+                    child: SvgPicture.asset(AssetsData.homeList),
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+              const SizedBox(
+                width: 13,
+              ),
+              Expanded(
+                child: SizedBox(
+                  width: 73.w,
+                  height: 23.h,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      'thamarat',
+                      style: safeGoogleFont(
+                        'Poppins',
+                        color: Colors.black,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w500,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 144,
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: 39.w,
+                  height: 39.h,
+                  margin: EdgeInsetsDirectional.only(end: 36.0.w),
+                  decoration: ShapeDecoration(
+                    color: AppColors.primary,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    shadows: const [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 0),
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                  child: IconButton(
+                    icon: SizedBox(
+                      width: 24.w,
+                      height: 24.h,
+                      child: Image.asset('assets/Media.png'),
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
             ],
           ),
           bottom: PreferredSize(
@@ -65,20 +138,14 @@ class SocialMediaScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             // Screen 1: Home Screen
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 20),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: fakePosts.length,
+            isLoading
+                ? Center(child: CircularProgressIndicator())
+                : ListView.builder(
+                    itemCount: posts.length,
                     itemBuilder: (context, index) {
-                      return PostCard(post: fakePosts[index]);
+                      return PostCard(post: posts[index]);
                     },
                   ),
-                ),
-              ],
-            ),
             // Screen 2: Chat Screen
             ChatList(),
           ],
@@ -86,27 +153,6 @@ class SocialMediaScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-Post generateFakePost() {
-  return Post(
-    id: faker.randomGenerator.integer(1000),
-    content: faker.lorem.sentences(5).join(' '),
-    image: null,
-    video: null,
-    createTime: faker.date.dateTime(),
-    likeCount: faker.randomGenerator.integer(100),
-    youLiked: faker.randomGenerator.boolean(),
-    commentCount: faker.randomGenerator.integer(50),
-    user: User(
-      id: faker.randomGenerator.integer(1000),
-      identity: faker.guid.guid(),
-      name: faker.person.name(),
-      email: faker.internet.email(),
-      profileImage: faker.image.image(),
-      bio: faker.lorem.sentence(),
-    ),
-  );
 }
 
 class PostCard extends StatelessWidget {
@@ -131,8 +177,10 @@ class PostCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 15,
-                    backgroundImage: NetworkImage(post.user.profileImage ??
-                        'https://via.placeholder.com/150'),
+                    backgroundImage: post.user.profileImage != null
+                        ? NetworkImage(post.user.profileImage!)
+                        : AssetImage(AssetsData.testImage)
+                            as ImageProvider, // Explicit cast
                   ),
                   SizedBox(width: 10),
                   Column(
@@ -144,10 +192,8 @@ class PostCard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               'Poppins')),
                       Text(post.user.bio ?? '',
-                          style: TextStyle(
-                              fontSize: 8,
-                              color: Colors.grey,
-                              fontFamily: 'Poppins')),
+                          style: safeGoogleFont(
+                              fontSize: 8, color: Colors.grey, 'Poppins')),
                     ],
                   ),
                   Spacer(),
@@ -182,8 +228,8 @@ class PostCard extends StatelessWidget {
                           fontSize: 11, fontWeight: FontWeight.w400, 'Inter')),
                   Row(
                     children: [
-                      Icon(Icons.comment, size: 24, color: Colors.grey),
-                      SizedBox(width: 5),
+                      const Icon(Icons.comment, size: 24, color: Colors.grey),
+                      const SizedBox(width: 5),
                       Text('${post.commentCount} Comment',
                           style: safeGoogleFont(
                               fontSize: 11,
@@ -199,46 +245,4 @@ class PostCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class Post {
-  final int id;
-  final String content;
-  final String? image;
-  final String? video;
-  final DateTime createTime;
-  final int likeCount;
-  final bool youLiked;
-  final int commentCount;
-  final User user;
-
-  Post({
-    required this.id,
-    required this.content,
-    this.image,
-    this.video,
-    required this.createTime,
-    required this.likeCount,
-    required this.youLiked,
-    required this.commentCount,
-    required this.user,
-  });
-}
-
-class User {
-  final int id;
-  final String identity;
-  final String name;
-  final String email;
-  final String? profileImage;
-  final String? bio;
-
-  User({
-    required this.id,
-    required this.identity,
-    required this.name,
-    required this.email,
-    this.profileImage,
-    this.bio,
-  });
 }

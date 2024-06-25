@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20screen%20widgets/list_view_header.dart';
 import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20screen%20widgets/book_list_view.dart';
-import 'package:untitled/src/Book%20management/presentation/view/widget/Book%20screen%20widgets/follow_list_view.dart';
 import 'package:untitled/src/core/utils/app_colors.dart';
 import 'package:untitled/src/core/utils/app_fonts.dart';
 import 'package:untitled/src/core/utils/assets.dart';

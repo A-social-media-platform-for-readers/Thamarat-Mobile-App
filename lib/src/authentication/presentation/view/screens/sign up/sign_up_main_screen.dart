@@ -13,9 +13,7 @@ import '../../widgets/back_and_next_buttons.dart';
 import '../../widgets/welcome_text.dart';
 
 class SignUpMainScreen extends StatefulWidget {
-  const SignUpMainScreen({
-    super.key,
-  });
+  const SignUpMainScreen({super.key});
 
   @override
   State<SignUpMainScreen> createState() => _SignUpMainScreenState();
@@ -33,8 +31,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _resetPasswordController =
-      TextEditingController();
+  final TextEditingController _resetPasswordController = TextEditingController();
   final TextEditingController _birthdayController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
 
@@ -62,8 +59,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
       identity: identification,
       name: _userNameController.text,
       email: _emailController.text,
-      password: _passwordController.text,
-      
+      password: _passwordController.text, // Ensure password is provided
     );
 
     bool success = await _authService.registerUser(user);
@@ -164,8 +160,7 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                           onTap: () {
                             if (validateStep()) {
                               if (currentStep == 2) {
-                                step2Key.currentState!
-                                    .signUpFormValidation(context);
+                                step2Key.currentState!.signUpFormValidation(context);
                               } else if (currentStep == stepLength) {
                                 registerUser(context);
                               } else {

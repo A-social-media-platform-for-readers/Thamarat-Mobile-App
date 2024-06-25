@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/src/Book%20management/Data/book_model.dart';
 import 'package:untitled/src/Book%20management/presentation/view/screens/book_details_screen.dart';
-import 'package:untitled/src/core/utils/app_colors.dart';
 import 'package:untitled/src/core/utils/app_fonts.dart';
 import 'package:untitled/src/core/utils/assets.dart';
 

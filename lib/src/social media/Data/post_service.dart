@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:untitled/src/core/api_constants.dart';
 import 'package:untitled/src/social%20media/Data/post_model.dart';
 
 class PostService {
@@ -10,7 +11,7 @@ class PostService {
     final jwt = prefs.getString('jwt') ?? '';
     try {
       final response = await _dio.get(
-        'https://api.example.org/social-media/posts/',
+        '${ApiConstants.baseUrl}social-media/posts/',
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -23,10 +24,17 @@ class PostService {
       );
 
       if (response.statusCode == 200) {
-        final List<Post> posts = (response.data['results'] as List)
-            .map((post) => Post.fromJson(post))
-            .toList();
-        return posts;
+        print(response.data); // Debugging: print the whole response data
+        if (response.data is Map<String, dynamic> &&
+            response.data['results'] is List) {
+          final List<Post> posts = (response.data['results'] as List)
+              .map((post) => Post.fromJson(post as Map<String, dynamic>))
+              .toList();
+          return posts;
+        } else {
+          print('Unexpected response format: ${response.data}');
+          return [];
+        }
       } else {
         print('Failed to load posts: ${response.statusMessage}');
         return [];

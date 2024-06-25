@@ -1,39 +1,28 @@
-import 'package:untitled/src/authentication/Data/user_mode.dart';
+import 'package:untitled/src/social%20media/Data/user_model2.dart';
 
 class Post {
   final int id;
   final String content;
-  final String? image;
-  final String? video;
-  final DateTime createTime;
+  final User2 user;
   final int likeCount;
-  final bool youLiked;
   final int commentCount;
-  final User user;
 
   Post({
     required this.id,
     required this.content,
-    this.image,
-    this.video,
-    required this.createTime,
-    required this.likeCount,
-    required this.youLiked,
-    required this.commentCount,
     required this.user,
+    required this.likeCount,
+    required this.commentCount,
   });
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
       id: json['id'],
-      content: json['content'],
-      image: json['image'],
-      video: json['video'],
-      createTime: DateTime.parse(json['create_time']),
+      content: json['content'] ?? '', // Handle null case with default value
+      user: User2.fromJson(
+          json['user']), // Assuming user data is parsed correctly
       likeCount: json['like_count'],
-      youLiked: json['you_liked'],
       commentCount: json['comment_count'],
-      user: User.fromJson(json['user']),
     );
   }
 }

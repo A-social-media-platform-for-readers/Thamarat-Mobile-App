@@ -1,40 +1,30 @@
 class User {
-  final int? id;
   final String identity;
-  final String password;
   final String name;
   final String email;
-  final String? profileImage;
-  final String? bio;
-  final List<int>? followers;
-  final List<int>? following;
-  final String? birthDate;
+  final String? profileImage; // Nullable, as it might be null in some cases
+  final String? bio; // Nullable, as it might be null in some cases
+  final String password;
 
   User({
-    this.id,
     required this.identity,
     required this.name,
     required this.email,
-    this.profileImage,
-    this.bio,
-    this.followers,
-    this.following,
-    this.birthDate,
+    this.profileImage, // Nullable, can be provided optionally
+    this.bio, // Nullable, can be provided optionally
     required this.password,
   });
 
+  // Factory method to convert JSON to User object
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
       identity: json['identity'],
       name: json['name'],
       email: json['email'],
-      profileImage: json['profile_image'],
-      bio: json['bio'],
-      followers: List<int>.from(json['followers'] ?? []),
-      following: List<int>.from(json['following'] ?? []),
-      birthDate: json['birth_date'],
-      password: '',
+      profileImage:
+          json['profileImage'], // Assuming 'profileImage' field in JSON
+      bio: json['bio'], // Assuming 'bio' field in JSON
+      password: json['password'], // Assuming 'password' field in JSON
     );
   }
 
@@ -48,9 +38,6 @@ class User {
 
     if (profileImage != null) data['profile_image'] = profileImage;
     if (bio != null) data['bio'] = bio;
-    if (followers != null) data['followers'] = followers;
-    if (following != null) data['following'] = following;
-    if (birthDate != null) data['birth_date'] = birthDate;
 
     return data;
   }

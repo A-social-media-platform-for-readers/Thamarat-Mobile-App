@@ -138,14 +138,7 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
         body: TabBarView(
           children: [
             // Screen 1: Home Screen
-            isLoading
-                ? Center(child: CircularProgressIndicator())
-                : ListView.builder(
-                    itemCount: posts.length,
-                    itemBuilder: (context, index) {
-                      return PostCard(post: posts[index]);
-                    },
-                  ),
+            
             // Screen 2: Chat Screen
             ChatList(),
           ],
